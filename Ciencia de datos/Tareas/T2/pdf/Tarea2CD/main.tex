@@ -1,0 +1,398 @@
+\documentclass[10.5pt,notitlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{amsmath,amssymb}       
+\usepackage{enumitem}   
+\usepackage{enumerate}
+\usepackage{verbatim} 
+\usepackage{bbm}
+\usepackage[backend=biber,style=apa]{biblatex}
+\usepackage{csquotes}
+\DeclareLanguageMapping{spanish}{spanish-apa}
+\urlstyle{same}
+\addbibresource{refer.bib}
+\usepackage{etoolbox}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\usepackage{makecell}
+\usepackage[spanish]{babel}
+\decimalpoint
+\usepackage[letterpaper]{geometry}
+\usepackage{mathrsfs}
+\newenvironment{solucion}
+  {\begin{proof}[Solución]}
+  {\end{proof}}
+\pagestyle{plain}
+\usepackage{pdflscape}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{longtable}
+\usepackage{tikz}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+\usepackage[bottom]{footmisc}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{placeins}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\argmax}{argmax}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\Ff}{\mathcal{F}}
+\newcommand{\Aa}{\mathcal{A}}
+\newcommand{\Jj}{\mathcal{J}}
+\newcommand{\Cc}{\mathcal{C}}
+\newcommand{\oo}{\varnothing}
+\newcommand{\ee}{\varepsilon}
+\newcommand{\Ee}{\mathcal{E}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\Pp}{\mathcal{P}}
+\newcommand{\Mm}{\mathcal{M}}
+\newcommand{\lL}{\mathrm{L}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ll}{\mathcal{L}}
+\newcommand{\xx}{\mathbf{x}}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\inner}[1]{\left\langle #1 \right\rangle}
+\newcommand{\corch}[1]{\left[ #1 \right]}
+\newcommand{\kis}[1]{\left\{ #1 \right\}}
+\newcommand{\pare}[1]{\left( #1 \right)}
+
+\theoremstyle{plain}
+
+\newtheorem{thm}{Teorema}[section] % reset theorem numbering for each chapter
+\newtheorem{defn}[thm]{Definición} % definition numbers are dependent on theorem numbers
+\newtheorem{lem}[thm]{Lema} % same for example numbers
+\newtheorem{remarkex}{Observación}
+\newenvironment{rem}
+  {\pushQED{\qed}\renewcommand{\qedsymbol}{$\triangle$}\remarkex}
+  {\popQED\endremarkex}
+
+\usepackage{geometry}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{framed}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{etoolbox}
+\usepackage{fancybox}
+
+\newenvironment{myleftbar}{%
+\def\FrameCommand{\hspace{0.6em}\vrule width 2pt\hspace{0.6em}}%
+\MakeFramed{\advance\hsize-\width \FrameRestore}}%
+{\endMakeFramed}
+\declaretheoremstyle[
+spaceabove=6pt,
+spacebelow=6pt
+headfont=\normalfont\bfseries,
+headpunct={} ,
+headformat={\cornersize*{2pt}\ovalbox{\NAME~\NUMBER\ifstrequal{\NOTE}{}{\relax}{\NOTE}:}},
+bodyfont=\normalfont,
+]{exobreak}
+
+\declaretheorem[style=exobreak, name=Ejercicio,%
+postheadhook=\leavevmode\myleftbar, %
+prefoothook = \endmyleftbar]{exo}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\title{Tarea 2: Introducción a Ciencia de Datos.}
+
+\author{Rojas Gutiérrez Rodolfo Emmanuel}
+
+
+\begin{document}
+
+\maketitle
+
+\section{Ejercicios}
+A lo largo de esta tarea, \(M_{n\times p}(\RR)\) denota el espacio de todas las matrices de dimensión \(n\times p\) con coeficientes en los reales, adicionalmente si \(A \in M_{n\times p}(\RR)\) entonces \(A'\) denota a la matriz transpuesta de \(A\). Por último, la notación \(I_p\) esta reservada para la matriz identidad de dimensión \(p\times p\). Por otro lado, se considerará que un espacio de probabilidad \((\Omega, \Ff, \PP)\) ha sido fijado. Finalmente y para comenzar con la resolución del ejercicio 1, se deja una última observación concerniente únicamente a dicho ejercicio.
+
+\begin{rem}[Ejercicio 1]\label{rem1}
+Dado un vector aleatorio \(p\)-variado con valores en \(\RR^{p}\) también es posible, gracias al isomorfismo existente entre \(\RR^{p}\) y \(M_{p \times 1}(\RR)\), ver a \(x\) como un elemento aleatorio que toma valores en \(M_{p \times 1}(\RR)\), con lo que expresiones del tipo \(Bx\) con \(B\in M_{p \times p}(\RR)\) o \(x'\) cobran sentido. De igual manera, tendrá sentido el hablar de la norma euclideana en \(\RR^{p}\) de expresiones del tipo \(Bx\), más aún, hay dos formas de calcular \(\norm{Bx}\) la primera, obteniendo la suma del cuadrado de las entradas de la matriz \(Bx\) y obteniendo su raíz cuadrada, y la segunda mediante la siguiente igualdad:\footnote{Note que por un lado estamos viendo a \(Bx\) como un vector aleatorio con valores en \(\RR^p\), mientras que, por el otro lado estamos viéndolo como un elemento aleatorio en \(M_{p \times p }(\RR)\)} 
+\[
+ \norm{Bx}^{1/2} = x'B'Bx. 
+\]
+Todo lo anterior, evidentemente se cumple para vectores no aleatorios en \(\RR^{p}\), por ejemplo, el vector de medias de algún vector aleatorio con valores en \(\RR^{p}\). Por último, se recuerda al lector que la norma de Frobenius en \(M_{p\times p }(\RR)\) se define como:
+\[
+\norm{A}_{F} = \Tr(A'A)^{1/2}, \quad A \in M_{p \times p }(\RR).
+\]
+Y que efecto, es una norma. 
+\end{rem}
+
+\setcounter{exo}{0}
+\begin{exo}
+Sea \(x\) un vector aleatorio \(p\)-dimensional, \(x' = (x_1, \hdots, x_p)\), con \(\EE[x]=0\) y \(\Var(x) = V\). Suponga que usted esta interesado en minimizar 
+\[
+\EE\kis{ \pare{x_1 - \sum_{j \neq 1}^{p}b_{ij}x_j}^2 }.
+\]
+Más aún, suponga que no solo se esta interesado en expresar a \(x_1\) en términos del resto de variables, como  en la expresión anterior, sino que queremos expresar a cada de las componentes de \(x\) en términos de las demás. Esto es, considere el problema de minimizar con respecto a  \(\kis{b_{ij} : i,j \in\kis{1,\hdots,p}, \ i \neq j}\) a 
+\[
+L = \EE\corch{\sum_{i = 1}^{p}\pare{x_i - \sum_{j \neq i}^{p}b_{ij}x_j}^2}.
+\]
+donde \(\norm{}\) denota a la norma euclideana en \(\RR^p\). Muestre que, si \(B\) es un una matriz en \(M_{p\times p}(\RR)\), tal que 
+\[
+B_{ij} = \begin{cases}
+b_{ij} & \text{ si } i\neq j \\ 
+0 & \text{ si } i = j 
+\end{cases}, \quad i,j \in \kis{1, \hdots ,p},
+\]
+entonces
+\[
+L = \EE\corch{\sum_{i = 1}^{p}\pare{x_i - \sum_{j \neq i}^{p}b_{ij}x_j}^2} = \EE\kis{\norm{x - Bx}^2}.
+\]
+Y, muestre que \(L = \norm{(I-B)V^{1/2}}_{F}^2\), donde, \(\norm{}_{F}\) denota a la norma de Frobenius en \(M_{p \times p}(\RR)\). 
+\begin{rem}\label{rem2}
+Si \(z\) es un vector con media \(\mu\) y varianza \(\Sigma\), entonces \(\EE[z'A z] = \mu' A \mu + \Tr(A \Sigma ).\)
+\end{rem}
+\end{exo}
+
+\begin{solucion}
+Sea \(x\) como en el enunciado de ejercicio. Tome \(B \in M_{p \times p}(\RR)\) una mátriz no aleatoria con entradas 
+\[B_{ij} = b_{ij},\quad i,j \in \kis{1, \hdots,p},\] 
+y, adicionalmente suponga que 
+\[
+b_{ii} = 0, \quad \text{ para cada } i \in \kis{1, \hdots, p}. 
+\]
+Entonces, por lo comentado en la Observación \ref{rem1}, \(x - Bx = (I_{p} - B)x\) puede verse como un elemento aleatorio en \(M_{p\times 1}(\RR)\), tal que para \(i \in \kis{1, \hdots, p}\) se tiene que:  
+\begin{align*}
+    ((I_{p} - B)x)_{i1} &= \sum_{j = 1}^{p}(I_{p} - B)_{ij}x_{j1} = \sum_{j = 1}^{p}((I_{p})_{ij} - B_{ij})x_{j}\\
+                        &= \sum_{j = 1}^{p}(\delta_{ij} - b_{ij})x_{j} = \sum_{j = 1}^{p}(\delta_{ij} - b_{ij})x_{j},
+\end{align*}
+donde \(\delta_{ij} = \mathbbm{1}_{\kis{i = j}}\), por lo que, es posible continuar la igualdad anterior como:
+\begin{align*}
+          &= (\delta_{ii} - b_{ii})x_{i} + \sum_{j \neq i}^{p}(\delta_{ij} - b_{ij})x_{j}\\ 
+          &= x_{i}- b_{ii}x_{i} - \sum_{j \neq i}^{p} b_{ij}x_{j} =  x_{i} - \sum_{j \neq i}^{p} b_{ij}x_{j}.
+\end{align*}
+De este, modo 
+\[
+  ((I_{p} - B)x)_{i1} = x_{i} - \sum_{j \neq i}^{p} b_{ij}x_{j}, \quad i \in \kis{1, \hdots, p}. 
+\]
+Por lo cual 
+\begin{align*}
+   \norm{ x - Bx } &= \norm{ (I_{p}- B)x } = \sqrt{\sum_{i = 1}^{p}((I_{p} - B)x)_{i1}^2 }= \sqrt{\sum_{i = 1}^{p}\pare{x_{i} - \sum_{j \neq i}^{p} b_{ij}x_{j}}^2}.     
+\end{align*}
+Lo que implica que
+\[
+   \norm{ x - Bx }^2 = \sum_{i = 1}^{p}\pare{x_{i} - \sum_{j \neq i}^{p} b_{ij}x_{j}}^2. 
+\]
+Así, tomando esperanzas a ambos lados de la igualdad anterior,\footnote{Las cuales existen por la no negatividad de las variables implicadas.} se obtiene: 
+\[
+L = \EE\kis{ \sum_{i = 1}^{p}\pare{x_{i} - \sum_{j \neq i}^{p} b_{ij}x_{j}}^2 } = \EE[\norm{ x - Bx }^2].
+\]
+Que es la primer igualdad solicitada. Por otro lado, de la Observación \ref{rem1} se sigue que 
+\[
+\norm{ x - Bx }^2 = \norm{ (I_{p} - B)x }^2 = x'(I_{p} - B)'(I_{p}- B)x,
+\]
+Así, tomando valores esperados a ambos lados de la igualdad anterior,\footnote{Nuevamente, por la no negatividad de las v.a's implicadas este paso no debería producir ruido.} se sigue que 
+\begin{align}\label{33}
+ L = \EE[\norm{ x - Bx }^2] = \norm{ (I_{p} - B)x }^2 = \EE[x'(I_{p} - B)'(I_{p}- B)x].   
+\end{align}
+Finalmente, de la Observación \ref{rem2} tomando \(A =(I - B)'(I - B)\), \(z = x\) y recordando que por hipótesis \(\EE[x] = 0\) y \(\Var(x) = V\), se tiene que: 
+\[
+\EE[x'(I - B)'(I- B)x] = \Tr((I - B)'(I - B)V).  
+\] 
+Ahora, dado que \(V\in M_{p \times p}(\RR)\) es una matriz de covarianzas, entonces, \(V\) debe ser una matriz semidefinida positiva por lo que, existe una matriz simétrica \(V^{1/2}\in M_{p \times p}(\RR)\) tal que \(V = V^{1/2}V^{1/2}\), así 
+\begin{align*}
+  \EE[x'(I - B)'(I- B)x] &= \Tr((I - B)'(I - B)V^{1/2}V^{1/2}) \\ 
+                       &= \Tr(V^{1/2}(I - B)'(I - B)V^{1/2}) \\ 
+                       &= \Tr((V^{1/2})'(I - B)'(I - B)V^{1/2}) = \norm{(I - B)V^{1/2}}_{F}^{2},   
+\end{align*}
+donde, la segunda igualdad se debe a que \(\Tr(AB) = \Tr(BA)\) para cada par \(A,B\) de matrices en \(M_{p\times p}(\RR)\), la tercera igualdad se debe a la simetría de \(V^{1/2}\) y la última se sigue de la definición de la norma de Froebenius. Así, por la igualdad anterior y por \eqref{33} es posible concluir que:
+\[
+ L = \norm{(I - B)V^{1/2}}_{F}^{2}.
+\]
+La segunda igualdad solicitada, lo que concluye el ejercicio. 
+
+
+
+
+
+\end{solucion}
+
+
+\begin{exo}
+Considere el conjunto de datos en la tabla \ref{tab:1}. El conjunto mostrado es obviamente ficticio, no obstante suponga que las observaciones son individuos, donde \(y\) es igual a uno si el individuo correspondiente a dicha observación padecía cierta enfermedad y cero en otro caso. Además, las predictoras son fiebre \((V_1)\), tos \((V_2)\), piel enrojecida \((V_3)\) y flujo nasal \((V_4)\). Donde, \(1\) significa que el síntoma esta presente y \(0\) si no.  
+\begin{itemize}
+    \item[a)] Para el conjunto de datos \ref{tab:1}, calcule todas las probabilidades requeridas para el clasificador Bayesiano ingenuo.
+    \item[b)] Al aplicar el clasificador a los \(6\) individuos, ¿Hay errores de clasificación?
+    \item[c)] Suponga tres pacientes, uno con tos y fiebre, otro con flujo nasal y fiebre y un tercero con flujo nasal y piel enrojecida. ¿Como los clasifica la herramienta desarrollada. 
+\end{itemize}
+\end{exo}
+\begin{table}[H]
+        \centering
+        \begin{tabular}{@{}l@{\hskip 0.3in}r@{\hskip 0.3in}r@{\hskip 0.3in}r@{\hskip 0.3in}r@{\hskip 0.3in}r@{\hskip 0.3in}r@{}}
+            \toprule
+            Obs & \(V_1\) & \(V_2\) & \(V_2\) & \(V_4\) & \(Y\)\\
+            \midrule
+            1 & 0 &1 & 1&1 &1\\
+            2 & 0 &1 & 0&1 &1\\
+            3 & 1 &0 & 1&0 &1\\
+            4 & 0 &0 & 0&1 &0\\
+            5 & 0 &0 & 0&0 &0\\
+            6 & 0 &1 & 1&0 &0\\
+            \bottomrule
+        \end{tabular}
+        \caption{Datos.}
+        \label{tab:1}
+\end{table}
+\begin{rem}[Ejercicio 2.]
+En ocasiones, a lo largo de este ejercicio se referirá como enfermos a los individuos que padezcan la enfermedad mencionada en el enunciado del ejercicio y, como sanos a los que no la padezcan, sin importar sus demás condiciones de salud. 
+\end{rem}
+
+\textbf{a)}
+\begin{solucion}
+En este caso, se quiere discernir entre dos poblaciones los enfermos denotados por \(1\) y los sanos denotados por \(0\). Como herramienta para realizar dicha clasificación se cuenta con 6 muestras, tabla \ref{tab:1}, la observación \(i = 1,\hdots, 6\) corresponde con las mediciones tomadas para el individuo \(i\). La notación en la tabla indica lo siguiente: 
+\begin{align*}
+      V_1& \text{ el individuo presenta fiebre: } 1 \text{ en caso positivo, } 0 \text{ e.o.c. }\\ 
+      V_2& \text{ el individuo presenta tos: } 1 \text{ en caso positivo, } 0 \text{ e.o.c. }\\
+      V_3& \text{ el individuo presenta irritación en la piel: } 1 \text{ en caso positivo, } 0 \text{ e.o.c. }\\
+      V_4& \text{ el individuo presenta flujo nasal: } 1 \text{ en caso positivo, } 0 \text{ e.o.c. }\\
+      Y& \text{ el individuo padece la enfermedad: } 1 \text{ en caso positivo, } 0 \text{ e.o.c. }
+\end{align*}
+A modo de ejemplo, el primer renglón de la tabla \ref{tab:1} indica que: el individuo \(1\) presentaba tos, irritación en la piel y flujo nasal, además, de que el padecía de la enfermedad.\\ 
+
+La clasificación se hará haciendo uso del clasificador Bayes Naive. A modo de resumen, recuerde que si se tienen \(k\) poblaciones y \(p\) predictores \(X = (X_1, \hdots, X_p)\), entonces el clasificador Bayesiano óptimo esta dada por
+\[
+g^{*}(x) = \argmax_{j \in \kis{1, \hdots, k}}\PP[Y = k | X = x],  \quad x\in \RR^{p}.
+\]
+En nuestro caso, se tienen \(2\) poblaciones y \(4\) predictores, así, si denota por \(V = (V_1, \hdots, V_4)\) entonces el clasificador bayesiano óptimo queda dado por: 
+\[
+g^{*}(v) = \argmax_{i\in\kis{1,2}}\kis{\PP[Y = i | V = v]}, \text{ donde }  v= (v_1,v_2,v_3,v_4)\in \kis{0,1}^{4}. 
+\]
+Lo que es equivalente a:
+\[
+g^{*}(v) = \argmax_{i\in\kis{1,2}}\kis{\PP[Y=i]\PP[V = v | Y = i]}, \text{ donde }  v= (v_1,v_2,v_3,v_4)\in \kis{0,1}^{4}. 
+\] 
+Luego, el clasificador Bayes Naive se obtiene del supuesto de independencia entre los predictores, es decir, esta dado por 
+\[
+g^{*}(v) = \argmax_{i\in\kis{1,2}}\kis{\PP[Y=i]\prod_{k=1}^{4}\PP_{k}[v_k| Y = i]}, \text{ con } v_k \in \kis{0,1} \text{ para cada } k\in{1, \hdots, 4}. 
+\]
+donde, dado que los predictores solo toman dos valores, \(\PP_{k}[v_k| Y = i]\) indica la probabilidad de que \(V_k = v_k\) dado que \(Y= i\) con \(k\in{1, \hdots, 4}\) e \(i \in \kis{0,1}\). En otros palabras, si un individuo padece la enfermedad entonces la probabilidad de que dicho individuo presente tos es \((\PP_{k}[1| Y = 1]\). Por último, en clase se vio que el clasificador anterior podía replantearse de forma equivalente de la siguiente manera. Sea \(V = (v_1, v_2, v_3, v_4)\) el conjunto de síntomas de un individuo codificado en ceros y unos, y sean 
+\begin{align}
+    LD = \log(\PP[Y = 1]) + \sum_{ j = 1}^{4}\log\pare{\frac{\PP_{k}[Y = 1|v_k]}{\PP[Y = 1]}}, \nonumber\\ 
+    LI = \log(1 - \PP[Y = 1]) + \sum_{ j = 1}^{4}\log\pare{\frac{1 - \PP_{k}[Y = 1|v_k]}{1 - \PP[Y = 1]}}. \label{BN.1}
+\end{align}
+donde, \(\PP_{k}[Y = 1|v_k]\) es la probabilidad de que el individuo padezca la enfermedad dado que su registro para el síntoma \(V_k\) fue \(v_k \in \kis{0,1}\). Entonces, si \(LD > LI\) se clasifica al individuo como enfermo y, en otro caso se clasifica como sano. Por lo cual, las probabilidades necesarias para construir el clasificador Bayes Naive son:
+\begin{align*}
+     \PP[Y = 1], \PP_{k}[Y = 1 | v_{k}], \quad v_{k}\in\kis{0,1}, \ k\in\kis{1,2,3,4}.
+\end{align*}
+Las probabilidades anteriores se estimaron de los datos, siguiendo las directrices del Ejemplo contenido en las paginas \(58 - 68\) de las notas de clase. Es decir, \(\PP[Y =1]\) se estimó como la proporción de enfermos en las seis observaciones realizadas, de este modo: 
+\[
+\PP[Y = 1] = \frac{\text{Número de enfermos en los datos}}{\text{Total de observaciones} } = \frac{3}{6} = \frac{1}{2}.
+\]
+Mientras que 
+\begin{align*}
+    \PP_{k}[Y = 1 | v_k] &= \frac{\text{Número de enfermos en los datos con registro \(v_k\), para el padecimiento \(V_k\)}}{\text{Total de pacientes en los datos con registro \(v_k\), para el padecimiento \(V_k\).}}
+\end{align*}
+Por ejemplo, para calcular \(\PP_{1}[Y = 1 | 0] \) observe la tabla \ref{tab:1} y note que el total de enfermos con un registro de \(0\) en el síntoma \(V_1\) es \(2\), mientras que el total de observaciones de individuos con registro \(0\) para el síntoma \(V_1\), es igual \(5\), por lo cual: 
+\[
+ \PP_{1}[Y = 1 | 0] = \frac{2}{5}. 
+\]
+Bajo esta metodología, se calcularon con ayuda del software \(R\) las restantes probabilidades \(\PP_{k}\), las cuales se presentan en el siguiente resumen
+\begin{table}[H]
+        \centering
+        \begin{tabular}{@{}l@{\hskip 0.3in}|r@{\hskip 0.3in}r@{\hskip 0.3in}r@{\hskip 0.3in}r@{\hskip 0.3in}r@{}}
+            \toprule
+             \(\PP_{k}[Y = 1|v_{k}]\)& \(k=1\) & \(k=2\)& \(k=3\)& \(k = 4\)&\\ 
+            \midrule
+            \(v_k =0\) &\(\frac{2}{5}\) & \(\frac{1}{3}\)& \(\frac{1}{3}\) & \(\frac{1}{3}\)\\
+            \(v_k =1\) &1&\(\frac{2}{3}\)&\(\frac{2}{3}\)&\(\frac{2}{3}\)\\
+            \bottomrule
+        \end{tabular}
+        \caption{Probabilidades estimadas con base en los datos de la tabla \ref{tab:1}, para el modelo Naive Bayes.}
+        \label{tab:2}
+\end{table}
+Así, se da por concluido este primer inciso. 
+
+\end{solucion}
+
+\textbf{b)}
+\begin{solucion}
+Considere la notación del inciso anterior. Haciendo uso de las probabilidades en la Tabla \ref{tab:2}, se calcularon los valores de \(LD\) y \(LI\) para cada una de las \(6\) observaciones contenidas en la tabla de datos, todo esto se realizó haciendo uso de \(R\) con lo que se obtuvo el siguiente resumen 
+\begin{table}[H]
+        \centering
+        \begin{tabular}{@{}l@{\hskip 0.3in}|r@{\hskip 0.3in}r@{\hskip 0.3in}r@{\hskip 0.3in}r@{\hskip 0.3in}r@{\hskip 0.3in}r@{}}
+            \toprule
+            \(Obs/NaiveBayes\) & \(LI\) & \(LD\)& Clase NBayes& Clase Real& Error\\ 
+            \midrule
+            \(1\) &\(-1.674\) & \(-0.018\)& \(1\)&\(1\)&No\\
+            \(2\) &\(-0.989\)&\(-0.704\)&\(1\)&\(1\)&No\\
+            \(3\) &\(-5.099\) & \(-0.481\)& \(1\)&\(1\)&No \\
+            \(4\) &\( -0.303\)&\(-1.390\)&\(0\)&\(0\)&No\\
+            \(5\) &\(0.383\) & \( -2.076\)& \(0\)&\(0\)& No\\
+            \(6\) &\(-0.989 \)&\(-0.704\)&\(1\)&\(0\)&Sí\\
+            \bottomrule
+        \end{tabular}
+        \caption{Clasificador Bayes-Naive aplicado a los datos de la Tabla \ref{tab:1}, es decir, al conjunto de datos de entrenamiento.}
+        \label{tab:3}
+\end{table}
+Como puede ver, sobre el conjunto de datos en los cuales el clasificador esta basado, solo se comete un error de clasificación, lo que da por terminado el inciso 
+\end{solucion}
+ 
+
+\textbf{c)}
+\begin{solucion}
+Para este último inciso, siga considerando la notación de los incisos anteriores. Luego, suponga que llegan tres individuos nuevos que refieren los siguientes síntomas: 
+\begin{itemize}
+    \item[\(1.\)] Individuo 1: tos y fiebre, sin ningún otro síntoma. 
+    \item[\(2.\)] Individuo 2: flujo nasal  y fiebre, sin ningún otro síntoma.
+    \item[\(3.\)] Individuo 3: flujo nasal y piel enrojecida, sin ningún otro síntoma.
+\end{itemize}
+siguiendo las ideas de los incisos anteriores, los síntomas de los cuatro nuevos sujetos se pueden codicar como: \((1,1,0,0)\) para el primero de ellos, \((1,0,0,1)\) para el segundo y \((0,0,1,1)\) para el último de ellos. Utilizando estas codificaciones es posible obtener haciendo uso de las probabilidades estimadas en la tabla \ref{tab:2}, los valores de \(LD\) y \(LI\) para cada uno de los nuevos individuos, y por ende, la clase asignada para cada uno de ellos por el clasificador Naive Bayes desrrollado. Nuevamente, esta tarea se hizo con una función programada en \(R\), con la que se obtuvo el siguiente resumen
+\begin{table}[H]
+        \centering
+        \begin{tabular}{@{}l@{\hskip 0.3in}|r@{\hskip 0.3in}r@{\hskip 0.3in}r@{\hskip 0.3in}r@{}}
+            \toprule
+            \(Nvo. Individuo/NaiveBayes\) & \(LI\) & \(LD\)& Clase NBayes\\ 
+            \midrule
+            \(1\) &\(-5.099\) & \(-0.481\)& \(1\)\\
+            \(2\) &\(-5.099\)&\(-0.481\)&\(1\)\\
+            \(3\) &\(-0.989\) & \(-0.704\)& \(1\)\\
+            \bottomrule
+        \end{tabular}
+        \caption{Clasificador Bayes-Naive aplicado a los datos de los nuevos sujetos.}
+        \label{tab:3}
+\end{table}
+Se destaca que todos los individuos fueron catalogados en la clase \(1\), es decir, todos se catalogaron como enfermos. Esto llamo mi atención, ya que todos estos últimos sujetos tenían algo en común, presentaban al menos dos síntomas, por lo que, pareciera que la herramienta desarrollada tiende a clasificar una persona como enferma, a partir de que esta presenta dos de los cuatro síntomas medidos. De este modo, con el fin de corroborar esta hipótesis se construyo la tabla \ref{tab:4}, en la que se presentan todas las posibles combinaciones de síntomas y las clasificaciones dadas por nuestro clasificador Naive Bayes
+\begin{table}[H]
+        \centering
+        \begin{tabular}{@{}l@{\hskip 0.3in}r@{\hskip 0.3in}r@{\hskip 0.3in}r@{\hskip 0.3in}r@{}}
+            \toprule
+            Combinación de síntomas & Clase NBayes\\ 
+            \midrule
+           \((0,0,0,0)\) & \(0\) \\ 
+           \((1,0,0,0)\) & \(1\) \\ 
+           \((0,1,0,0)\) & \(0\) \\ 
+           \((0,0,1,0)\) & \(0\) \\
+           \((0,0,0,1)\) & \(0\) \\ 
+           \((1,1,0,0)\) & \(1\) \\ 
+           \((1,0,1,0)\) & \(1\) \\ 
+           \((1,0,0,1)\) & \(1\) \\
+           \((0,1,0,1)\) & \(1\) \\ 
+           \((0,1,1,0)\) & \(1\) \\ 
+           \((0,0,1,1)\) & \(1\) \\ 
+           \((1,1,1,0)\) & \(1\) \\
+           \((1,0,1,1)\) & \(1\) \\ 
+           \((1,1,0,1)\) & \(1\) \\ 
+           \((0,1,1,1)\) & \(1\) \\ 
+           \((1,1,1,1)\) & \(1\) \\           
+            \bottomrule
+        \end{tabular}
+        \caption{Todas las combinaciones posibles de síntomas.}
+        \label{tab:4}
+\end{table}
+Analizando la Tabla \ref{tab:4} se corrobora nuestra hipótesis y se pueden obtener otras conclusiones: El síntoma que parece estar más relacionado con la enfermedad es la fiebre, pues es el único síntoma que de presentarse en un individuo en ausencia de los demás síntoma, provocará que este sea catalogado como enfermo. Todos los demás síntomas, al presentarse de manera individual dan un diagnostico negativo para esta enfermedad. Y, como era de esperarse, la ausencia de síntomas también es catalogada como
+ausencia de la enfermedad. 
+\end{solucion}
+
+
+\end{document}

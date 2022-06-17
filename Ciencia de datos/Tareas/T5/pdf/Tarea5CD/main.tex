@@ -1,0 +1,312 @@
+\documentclass[10.5pt,notitlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{amsmath,amssymb}       
+\usepackage{enumitem}   
+\usepackage{enumerate}
+\usepackage{verbatim} 
+\usepackage{bbm}
+\usepackage[backend=biber,style=apa]{biblatex}
+\usepackage{csquotes}
+\DeclareLanguageMapping{spanish}{spanish-apa}
+\urlstyle{same}
+\addbibresource{refer.bib}
+\usepackage{etoolbox}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\usepackage{makecell}
+\usepackage[spanish]{babel}
+\decimalpoint
+\usepackage[letterpaper]{geometry}
+\usepackage{mathrsfs}
+\newenvironment{solucion}
+  {\begin{proof}[Solución]}
+  {\end{proof}}
+\pagestyle{plain}
+\usepackage{pdflscape}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{longtable}
+\usepackage{tikz}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+\usepackage[bottom]{footmisc}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{placeins}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\argmax}{argmax}
+\DeclareMathOperator{\argmin}{argmin}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\Ff}{\mathcal{F}}
+\newcommand{\Aa}{\mathcal{A}}
+\newcommand{\Jj}{\mathcal{J}}
+\newcommand{\Cc}{\mathcal{C}}
+\newcommand{\oo}{\varnothing}
+\newcommand{\ee}{\varepsilon}
+\newcommand{\Ee}{\mathcal{E}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\Pp}{\mathcal{P}}
+\newcommand{\Mm}{\mathcal{M}}
+\newcommand{\lL}{\mathrm{L}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ll}{\mathcal{L}}
+\newcommand{\xx}{\mathbf{x}}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\inner}[1]{\left\langle #1 \right\rangle}
+\newcommand{\corch}[1]{\left[ #1 \right]}
+\newcommand{\kis}[1]{\left\{ #1 \right\}}
+\newcommand{\pare}[1]{\left( #1 \right)}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+
+\theoremstyle{plain}
+
+\newtheorem{thm}{Teorema}[section] % reset theorem numbering for each chapter
+\newtheorem{defn}[thm]{Definición} % definition numbers are dependent on theorem numbers
+\newtheorem{lem}[thm]{Lema} % same for example numbers
+\newtheorem{remarkex}{Observación}
+\newenvironment{rem}
+  {\pushQED{\qed}\renewcommand{\qedsymbol}{$\triangle$}\remarkex}
+  {\popQED\endremarkex}
+
+\usepackage{geometry}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{framed}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{etoolbox}
+\usepackage{fancybox}
+
+\newenvironment{myleftbar}{%
+\def\FrameCommand{\hspace{0.6em}\vrule width 2pt\hspace{0.6em}}%
+\MakeFramed{\advance\hsize-\width \FrameRestore}}%
+{\endMakeFramed}
+\declaretheoremstyle[
+spaceabove=6pt,
+spacebelow=6pt
+headfont=\normalfont\bfseries,
+headpunct={} ,
+headformat={\cornersize*{2pt}\ovalbox{\NAME~\NUMBER\ifstrequal{\NOTE}{}{\relax}{\NOTE}:}},
+bodyfont=\normalfont,
+]{exobreak}
+
+\declaretheorem[style=exobreak, name=Ejercicio,%
+postheadhook=\leavevmode\myleftbar, %
+prefoothook = \endmyleftbar]{exo}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\title{Tarea 5: Introducción a Ciencia de Datos.}
+
+\author{Rojas Gutiérrez Rodolfo Emmanuel}
+
+\begin{document}
+\maketitle
+\section{Ejercicio}
+
+\setcounter{exo}{0}
+\begin{exo}
+Considere el conjunto de datos 'datos.csv':
+\begin{itemize}
+    \item[a)] Ajuste (en R o Python) un modelo de regresión lineal a estos datos haciendo uso del procedimiento de gradiente estocástico. Estudie diferentes alternativas para el tamaño de paso. 
+    \item[b)] Investigue acerca de versiones de gradiente estocástico que usan el método de momentos e implementelo en R o Python, aplicado a datos "csv".
+\end{itemize}
+\end{exo}
+
+
+\textbf{a)} 
+\begin{solucion}
+El archivo 'datos.csv' contiene \(21454\) observaciones de una variable respuesta la cuál se denotará por \(y\), además de que cuenta con el mismo número de observaciones para 23 variables predictoras. Se destaca que todas las columnas en este conjunto de datos son de tipo numérico y que no existen \(NA's\) en este conjunto. Lo anterior, se puede corroborar en  el siguiente resumen reportado por \(R\) del mismo:
+
+
+
+Ahora, denote por \(X\) a una matriz en \(M_{21454 \times 24}(\RR)\) tal que 
+\begin{itemize}
+    \item Su primer columna consta únicamente de unos.
+    \item Mientras que, las restantes 23 columnas de \(X\) coinciden con las primeras 23 columnas en la tabla 'datos.csv'. 
+\end{itemize}
+Y, sea \(y\) la matriz columna en \(M_{21454 \times 24}(\RR)\) cuya única columna, coincide con la última columna de la tabla 'datos.csv'. Entonces, se busca ajustar un modelo de regresión lineal de la forma 
+\[
+y = X \beta + \ee,
+\]
+donde, \(\beta\) es un vector columna de parámetros en \(M_{24 \times 1}(\RR)\) y \(\ee\) es un vector columna de términos de error que toma valores en \(M_{24 \times 1}(\RR)\). Ahora, en \(R\) se corroboro que \(X\) no es una matriz de rango completo, pues, el rango de dicha matriz es \(23 < \min\kis{24,21454}\). Por ende, no se posible el resolver de manera convencional el problema de minimización 
+\[
+ \hat{\beta} = \argmin_{\beta\in M_{21454 \times 1}(\RR)}\norm{y - X \beta}, \text{ donde } \norm{\cdot}  \text{ representa a la norma Euclideana en } \RR^{21454},
+\]
+para efectuar la estimación del vector de parámetros \(\hat{\beta}\). No obstante, es posible aplicar el algoritmo del descenso por gradiente estocástico para encontrar una solución al problema. Con esto en mente, defínase la función \(f:\RR^24 \to \RR_{+}\) como
+\[
+f(\beta) = \norm{y - X \beta}^2, \text{ donde } \beta = \begin{pmatrix}\beta_1 & \beta_2 &\hdots& \beta_{24}\end{pmatrix}.
+\] 
+Luego, si se denota por \(X_{ij}\) y \(y_{i1}\) con \(i \in \kis{1, \hdots, 21454}\) y \(j \in \kis{0,\hdots,23}\) a las entradas de \(X\) y \(y\) respectivamente, entonces, la ecuación anterior puede expresarse de manera equivalente como: 
+\begin{equation*}
+    f(\beta) = \sum_{i = 1}^{21454}\corch{y_i - \sum_{j = 0}^{23}\beta_jX_{ij} }^2.
+\end{equation*}
+Así, sea \(k \in \kis{0,\hdots, 23}\) entonces derivando \(f\) con respecto a \(\beta_k\) se obtiene:
+\begin{equation*}
+    \frac{\partial}{\partial \beta_{k}}f = -2\sum_{i = 1}^{21454}X_{ik}\corch{y_i - \sum_{j = 0}^{23}\beta_jX_{ij}}, \text{ donde } X_{ik} = 1 \text{ si } k = 0.
+\end{equation*}
+Así, el gradiente de la función \(f\) esta dado por  
+\begin{equation*}
+    \nabla f(\beta)_{k1} = \sum_{i = 1}^{21454}2X_{ik}\corch{-y_i + \sum_{j = 0}^{23}\beta_jX_{ij}}, \text{ con } k \in \kis{0, \hdots, 23},
+\end{equation*}
+Finalmente, el método del gradiente estocástico consiste en seleccionar al azar en cada iteración una observación \(i^* \in \kis{1, \hdots, 21454}\) y actualizar la estimación hecha con las iteraciones pasadas de la siguiente forma:
+\[
+\hat{\beta}_{k}^{nuevo} \leftarrow \hat{\beta}_{k}^{viejo} - 2\gamma X_{i^*k}\corch{-y_i^* +\sum_{j = 0}^{23}\beta_{j}^{viejo}X_{i^*j}}, \text{ con } k \in \kis{1, \hdots,24}.
+\]
+Es decir, solo se evalúa una componente de la suma en el gradiente en cada iteración, la cual se selecciona al azar. Ahora, para tener un criterio de paro óptimo para nuestro algoritmo se uso lo siguiente. Se sabe que la matriz \(X'X\) no será invertible,\footnote{Pues \(X\) no es de rango completo.} no obstante posee una inversa de Moore-Penrose, entonces, una posible alternativa para estimar el vector de coeficientes \(\beta\) es mediante la siguiente formula:\footnote{Para ver el vector al completo puede revisar el script adjunto.}
+\begin{equation}\label{MP}
+    \widetilde{\beta} = (X'X)^{+}X'y = \begin{pmatrix}5.661\cdot10^{-10} , 1.186\cdot10^{-5}, \hdots, 1.274\cdot 10^{-12},7.001\cdot10^{-14}\end{pmatrix}'.
+\end{equation}
+Luego, esta estimación para \(\beta\) obtiene una suma de cuadrados residual de:
+\begin{equation}\label{MPSS}
+S_{opt} = f(\widetilde{\beta}) =  \norm{y - X \widetilde{\beta}}^2 =  173.0906.    
+\end{equation}
+Así, el algoritmo a emplear será el siguiente: 
+\begin{itemize}
+    \item[1.] Si \(n =0\) se selecciona \(\hat{\beta}_{k}^{(n)} = (X'y)_{k1}\) con \(k \in \kis{0, \hdots, 23}\).
+    \item[2.] Se elige al azar un índice \(i^*\) en el conjunto \(\kis{1,\hdots,21454}\), que no se haya seleccionado en los \(n\) pasos anteriores, y se actualiza la estimación del vector de parámetros \(\beta\) de la siguiente forma:
+    \[
+      \hat{\beta}_{k}^{(n+1)} \leftarrow \hat{\beta}_{k}^{(n)} - 2\gamma X_{i^*k}\corch{-y_i^* + \sum_{j = 0}^{23}\beta_{j}^{(n)}X_{i^*j}}, \text{ con } k \in \kis{1, \hdots,24}.
+    \]
+    donde, \(\gamma\) es el tamaño de paso el cual se debe determinar.
+    \item[3.] Se calcula la suma de cuadrados residual asociada a esta estimación de \(\beta\), la cual se denotará por \(SCR_{n+1}\), y esta dada por:
+    \[
+    SCR_{n+1} = f(\hat{\beta}^{(n+1)}) = \sum_{i = 1}^{21454}\corch{y_i - \sum_{j = 0}^{23}\hat{\beta}_{j}^{(n+1)}X_{ij} }^2,
+    \]
+    donde, \((\hat{\beta}^{(n+1)})_{k1} =  \hat{\beta}_{k}^{(n+1)}\) para cada \(k\in \kis{0,\hdots,23}\). Si 
+    \[
+    \abs{SCR_{n+1} - S_{opt}} > 0.01.
+    \]
+    entonces, el algoritmo acaba y la estimación para \(\beta\) es \( \hat{\beta} =\hat{\beta}^{(n+1)}\), en otro caso, se repite todo desde el paso 2 intercambiando el papel de \(n\) por \(n+1\).
+\end{itemize}
+Finalmente, se verá que la elección del tamaño de paso es muy relevante. Para ello, se programo el algoritmo anteriormente estructurado en \(R\) y se probo el mismo con diversos tamaños de paso, obteniendo 3 casos que se cree es de relevancia comentar. El primero de ellos fue eligiendo \(\gamma = 10^{-1}\), pues en este caso el algoritmo entraba en un bucle infinito, es decir, el criterio de paro óptimo nunca se alcanzaba, por lo cual, se decidió ver que pasaba después de 10 iteraciones del mismo, lo que se encontró puede resumirse en el gráfico presentado en la Figura \ref{fig:1}, en el cual se puede observar el valor de la suma de cuadrados residual, para cada una de las estimaciones de \(\beta\) hecha en cada una de las 10 iteraciones, en dicha gráfica se puede ver que la suma de cuadrados residual parece hacerse arbitrariamente grande conforme avanzan las iteraciones, lo que da una posible explicación del porque el algoritmo nunca concluía. 
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale = 0.5]{SGD explota.png}
+    \caption{Método del Gradiente estocástico con tamaño de paso \(\gamma = 10^{-1}\).}
+    \label{fig:1}
+\end{figure}
+
+Otra caso importante, fue cuando se eligió como tamaño de paso a \(\gamma = 10^{-100}\), pues, en este caso el algoritmo volvía entrar en un bucle infinito, por lo cual se decidió ver como se comportaba el mismo después de un número finito de pasos, el resultado de esto puede observarse en el gráfico presentado en la Figura \ref{fig:2}, en el cual se puede observar el valor de la suma de cuadrados residual, para cada una de las estimaciones de \(\beta\) hechas a través de 1000 iteraciones del algoritmo. En este gráfico puede observarse que lo que pasa en este caso es que el algoritmo parece quedarse estático pues la suma de cuadrados es casi constante a lo largo de las iteraciones. Esto puede deberse a que el tamaño de paso se selecciono tan pequeño, que realmente no se esta restando prácticamente nada en cada iteración del algoritmo, cuando este se encuentra actualizando el vector de parámetros en cada paso.\footnote{Paso \(3.\) del algoritmo planteado.} De hecho, se calculó la máxima diferencia en valor absoluto entre las entradas de la semilla inicial \(\hat{\beta}^{(0)}\) y el último valor calculado por el algoritmo \(\hat{\beta}^{(1000)}\), lo que dio un resultado de \(5.672\cdot10^{-99}\) que es una cantidad prácticamente igual a \(0\). 
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale = 0.5]{SGD estático.png}
+    \caption{Método del Gradiente estocástico con tamaño de paso \(\gamma = 10^{-100}\).}
+    \label{fig:2}
+\end{figure}
+Lo anterior, sugiere que el elegir tamaños de paso muy pequeños harán que el método se quede estático, mientras que, el elegir tamaños de paso muy grandes harán que el método diverja. Por ende, se decidió elegir un tamaño de paso de \(\gamma = 10^{-10}\) el cual se encuentra entre los valores propuestos con anterioridad. El resultado se puede resumir en el gráfico presentado en la Figura \ref{fig:3}, como lo sugiere dicho gráfico el método convergió después de \(325\) iteraciones, dando un valor final para la suma de cuadrados de 
+\[
+SCR_{325} =  173.0906.
+\]
+Lo que es exactamente igual al valor que se obtiene al hacer uso de la inversa de Moore-Penrose. Por otro lado, la diferencia en valore absolutos más grande entre las entradas del vector \(\hat{\beta}^{(325)}\), estimado mediante el método SGD, y el vector \(\widetilde{\beta}\) construido con la inversa de Moore-Penrose es de \(7.721\cdot 10^{-10}\), lo que nos da una idea entre la cercanía de estos vectores.   
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale = 0.5]{SGD chido.png}
+    \caption{Método del Gradiente estocástico con tamaño de paso \(\gamma = 10^{-10}\).}
+    \label{fig:3}
+\end{figure}
+\end{solucion}
+
+
+\textbf{b)}
+\begin{solucion}
+Finalmente, para este segundo inciso se investigaron dos algoritmos adicionales, los cuales llevan por nombre Descenso por gradiente estocástico con Momentum (SGDM) y Método de Estimación Adaptada por Momentos (ADAM), los cuales agregan estimadores de la media y el segundo momento no centrado del gradiente al proceso iterativo. Dichos estimadores de los momentos se construyen con los rezagos de los gradientes estimados en las iteraciones anteriores. La idea que hay detrás de esto es sencilla, en SGD no se calcula exactamente el valor del gradiente, pues, como ya hemos visto anteriormente el gradiente solo se evalúa en cierto subconjunto del total de datos. Por ende, al agregar las estimaciones mencionados en el proceso iterativo se puede mantener mayor precisión en la relación que existe entre el gradiente real, que debería ser calculado en la \(n\)-ésima iteración, y el gradientes que es calculado en realidad en dicha iteración del algoritmo, con lo que, al menos en principio se piensa que la convergencia del método debería ser más rápida. A continuación se lista, el como se aplicarían los algoritmos mencionados al conjunto de datos 'datos.csv'. Primero, empezaremos con SGDM: 
+\begin{itemize}
+    \item[1.] Si \(n =0\) se selecciona \(\hat{\beta}_{k}^{(n)} = (X'y)_{k1}\) con \(k \in \kis{0, \hdots, 23}\) y se define \(m^{(0)} \in M_{24\times 1}(\RR)\) con todas sus entradas iguales a cero.
+    \item[2.] Se elige al azar un índice \(i^*\) en el conjunto \(\kis{1,\hdots,21454}\), que no se haya seleccionado en los \(n\) pasos anteriores, y 
+    se calcula el gradiente aproximado en \(i^*\) como 
+    \[
+    g_{k}^{(n+1)} \leftarrow 2X_{i^*k}\corch{- y_i^* + \sum_{j = 0}^{23}\beta_{j}^{(n)}X_{i^*j}}, \text{ con } k \in \kis{0, \hdots,23}
+    \]
+    Posteriormente, se construye el estimador para la media del gradiente como: 
+    \[
+    m_{k}^{(n+1)} \leftarrow \iota_1 m_k^{(n+1)} + (1 -\iota_1)g_{k}^{(n+1)}, \text{ con } k \in \kis{0, \hdots,23},
+    \]
+    donde, \(\iota_1\) es un hiper-parámetro en \((0,1)\) que debe ser seleccionado al inicio del proceso. Luego, se actualiza la estimación del vector de parámetros \(\beta\) de la siguiente forma:
+    \[
+      \hat{\beta}_{k}^{(n+1)} \leftarrow \hat{\beta}_{k}^{(n)} - \gamma m_{k}^{(n+1)}, \text{ con } k \in \kis{0, \hdots,23}.
+    \]
+    donde, \(\gamma\) es el tamaño de paso cuyo valor se debe determinar al iniciar el algoritmo.
+    \item[3.] Se calcula la suma de cuadrados residual asociada a esta estimación de \(\beta\), la cual se denotará por \(SCR_{n+1}\), y esta dada por:
+    \[
+    SCR_{n+1} = f(\hat{\beta}^{(n+1)}) = \sum_{i = 1}^{21454}\corch{y_i - \sum_{j = 0}^{23}\hat{\beta}_{j}^{(n+1)}X_{ij} }^2,
+    \]
+    donde, \((\hat{\beta}^{(n+1)})_{k1} =  \hat{\beta}_{k}^{(n+1)}\) para cada \(k\in \kis{0,\hdots,23}\). Si 
+    \[
+    \abs{SCR_{n+1} - S_{opt}} > 0.01.
+    \]
+    entonces, el algoritmo acaba y la estimación para \(\beta\) es \( \hat{\beta} =\hat{\beta}^{(n+1)}\), en otro caso, se repite todo desde el paso 2 intercambiando el papel de \(n\) por \(n+1\).
+\end{itemize}
+Mientras que, el algoritmo para el método ADAM quedaría descrito de la siguiente manera: 
+\begin{itemize}
+    \item[1.] Si \(n =0\) se selecciona \(\hat{\beta}_{k}^{(n)} = (X'y)_{k1}\) con \(k \in \kis{0, \hdots, 23}\) y se definen \(m^{(0)},v^{(0)} \in M_{24\times 1}(\RR)\), iguales al elemento \(0\) en \(M_{24\times 1}(\RR)\).
+    \item[2.] Se elige al azar un índice \(i^*\) en el conjunto \(\kis{1,\hdots,21454}\), que no se haya seleccionado en los \(n\) pasos anteriores, y 
+    se calcula el gradiente aproximado en \(i^*\) como 
+    \[
+    g_{k}^{(n+1)} \leftarrow 2X_{i^*k}\corch{- y_i^* + \sum_{j = 0}^{23}\beta_{j}^{(n)}X_{i^*j}}, \text{ con } k \in \kis{0, \hdots,23}
+    \]
+    Posteriormente, se construyen los estimadores para la media y el segundo momento del gradiente, como: 
+    \begin{align*}
+       m_{k}^{(n+1)} &\leftarrow \iota_1 m_k^{(n)} + (1 -\iota_1)g_{k}^{(n+1)}, \text{ con } k \in \kis{0, \hdots,23},\\ 
+       v_{k}^{(n+1)} &\leftarrow \iota_2 v_k^{(n)} + (1 -\iota_2)(g_{k}^{(n+1)})^2, \text{ con } k \in \kis{0, \hdots,23},\\            
+    \end{align*}
+    donde, \(\iota_1\) y \(\iota_2\) son hiper-parámetros en \((0,1)\) que deben ser seleccionados al inicio del proceso. Luego, los estimadores anteriores se corrigen al multiplicarlos por una cantidad denominada como factor de corrección del sesgo, de la siguiente manera:
+    \begin{align*}
+       \hat{m}_{k}^{(n+1)} &\leftarrow \frac{m_{k}^{(n+1)}}{1 - \iota_{1}^n}, \text{ con } k \in \kis{0, \hdots,23},\\ 
+       \hat{v}_{k}^{(n+1)} &\leftarrow  \frac{v_k^{(n+1)}}{1 - \iota_{2}^n}, \text{ con } k \in \kis{0, \hdots,23},\\            
+    \end{align*}    
+    Finalmente, se actualiza la estimación del vector de parámetros \(\beta\) de la siguiente forma:
+    \[
+      \hat{\beta}_{k}^{(n+1)} \leftarrow \hat{\beta}_{k}^{(n)} - \gamma \frac{\hat{m}_{k}^{(n+1)}}{\sqrt{\hat{v}_{k}^{(n+1)}} + \ee}, \text{ con } k \in \kis{0, \hdots,23}.
+    \]
+    donde, \(\gamma\) es el tamaño de paso cuyo valor se debe determinar al iniciar el algoritmo y \(\ee > 0\), es una cantidad muy pequeña que se elige con el objetivo de evitar divisiones por cero.
+    \item[3.] Se calcula la suma de cuadrados residual asociada a esta estimación de \(\beta\), la cual se denotará por \(SCR_{n+1}\), y esta dada por:
+    \[
+    SCR_{n+1} = f(\hat{\beta}^{(n+1)}) = \sum_{i = 1}^{21454}\corch{y_i - \sum_{j = 0}^{23}\hat{\beta}_{j}^{(n+1)}X_{ij} }^2,
+    \]
+    donde, \((\hat{\beta}^{(n+1)})_{k1} =  \hat{\beta}_{k}^{(n+1)}\) para cada \(k\in \kis{0,\hdots,23}\). Si 
+    \[
+    \abs{SCR_{n+1} - S_{opt}} > 0.01.
+    \]
+    entonces, el algoritmo acaba y la estimación para \(\beta\) es \( \hat{\beta} =\hat{\beta}^{(n+1)}\), en otro caso, se repite todo desde el paso 2 intercambiando el papel de \(n\) por \(n+1\).
+\end{itemize}
+Ahora, hubo un problema al intentar aplicar ADAM, pues, este algoritmo requiere de una gran cantidad de hiper-parámetros para ser implementado. No obstante, fue relativamente fácil calibrar los hiper-parámetros para el método SGDM, la aplicación de este último método sobre los datos en 'datos.csv' se realizó en \(R\), el código de esta implementación puede consultarse en el script adjunto a este trabajo. Un breve resumen gráfico de lo acontecido al aplicar este algoritmo, similar al presentado en el inciso anterior cuando se selecciono el \(\gamma\) correcto, puede verse en la gráfica presentada en la figura \ref{fig:4}.\footnote{Es importante resaltar que para poder hacer comparables los resultados de SGDM con los de SGD, se gráfico como en los casos anteriores la \(SCR\) de cada iteración más la SCR de la semilla inicial.} Los hiper-parámetros que fueron usados fue \(\iota_1 = 0.2\) y \(\gamma = 8\cdot 10^{-10}\). Adicionalmente, como el gráfico mencionado lo sugiere, el método convergió después de \(31\) iteraciones, lo cual son \(294\) iteraciones menos que el algoritmo \(SGD\) original. La suma de cuadrados con el estimador \(\hat{\beta}^{(31)}\) arrojada por este método fue de:
+\[
+SCR_{31} = 173.0914,
+\]
+lo cual, como era de esperarse, es bastante cercano a la suma de cuadrados óptima \eqref{MPSS}. Finalmente, la diferencia en valor absoluto máxima entre las entradas de \(\hat{\beta}^{(31)}\) y \(\widetilde{\beta}\) fue de \(1.064\cdot 10^{-8}\) lo cual es bastante cercano a cero.  
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale = 0.5]{SGDM.png}
+    \caption{Método SGDM con \(\iota_1 = 0.2\) y \(\gamma = 8\cdot 10^{-10}\).}
+    \label{fig:4}
+\end{figure}
+Por último, se deja en la Figura \ref{fig:5} una gráfica comparativa entre ambos métodos, con el objetivo de que se vea de manera gráfica la diferencia en la velocidad de convergencia que existió entre ambos en este caso.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale = 0.5]{Diferencia de convergencia.png}
+    \caption{Método SGDM con \(\iota_1 = 0.2\) y \(\gamma = 8\cdot 10^{-10}\) en linea negra, contra, método SGD con \(\gamma =  10^{-10}\) en linea roja.}
+    \label{fig:5}
+\end{figure}
+\end{solucion}
+
+
+\newpage
+\nocite{*}
+\printbibliography
+
+
+
+
+
+\end{document}

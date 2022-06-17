@@ -1,0 +1,1102 @@
+\documentclass[10.5pt,notitlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{amsmath,amssymb}       
+\usepackage{enumitem}   
+\usepackage{enumerate}
+\usepackage{verbatim} 
+\usepackage{bbm}
+\usepackage[backend=biber,style=apa]{biblatex}
+\usepackage{csquotes}
+\DeclareLanguageMapping{spanish}{spanish-apa}
+\urlstyle{same}
+\addbibresource{refer.bib}
+\usepackage{etoolbox}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\usepackage{makecell}
+\usepackage[spanish]{babel}
+\decimalpoint
+\usepackage[letterpaper]{geometry}
+\usepackage{mathrsfs}
+\newenvironment{solucion}
+  {\begin{proof}[Solución]}
+  {\end{proof}}
+\pagestyle{plain}
+\usepackage{pdflscape}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{longtable}
+\usepackage{tikz}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+\usepackage[bottom]{footmisc}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{placeins}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\argmax}{argmax}
+\DeclareMathOperator{\argmin}{argmin}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\Ff}{\mathcal{F}}
+\newcommand{\Aa}{\mathcal{A}}
+\newcommand{\Jj}{\mathcal{J}}
+\newcommand{\Cc}{\mathcal{C}}
+\newcommand{\oo}{\varnothing}
+\newcommand{\ee}{\varepsilon}
+\newcommand{\Ee}{\mathcal{E}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\Pp}{\mathcal{P}}
+\newcommand{\Mm}{\mathcal{M}}
+\newcommand{\lL}{\mathrm{L}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ll}{\mathcal{L}}
+\newcommand{\xx}{\mathbf{x}}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\inner}[1]{\left\langle #1 \right\rangle}
+\newcommand{\corch}[1]{\left[ #1 \right]}
+\newcommand{\kis}[1]{\left\{ #1 \right\}}
+\newcommand{\pare}[1]{\left( #1 \right)}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\Matrix}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+
+\theoremstyle{plain}
+
+\newtheorem{thm}{Teorema}[section] % reset theorem numbering for each chapter
+\newtheorem{defn}[thm]{Definición} % definition numbers are dependent on theorem numbers
+\newtheorem{lem}[thm]{Lema} % same for example numbers
+\newtheorem{remarkex}{Observación}
+\newenvironment{rem}
+  {\pushQED{\qed}\renewcommand{\qedsymbol}{$\triangle$}\remarkex}
+  {\popQED\endremarkex}
+
+\usepackage{geometry}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{framed}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{etoolbox}
+\usepackage{fancybox}
+
+\newenvironment{myleftbar}{%
+\def\FrameCommand{\hspace{0.6em}\vrule width 2pt\hspace{0.6em}}%
+\MakeFramed{\advance\hsize-\width \FrameRestore}}%
+{\endMakeFramed}
+\declaretheoremstyle[
+spaceabove=6pt,
+spacebelow=6pt
+headfont=\normalfont\bfseries,
+headpunct={} ,
+headformat={\cornersize*{2pt}\ovalbox{\NAME~\NUMBER\ifstrequal{\NOTE}{}{\relax}{\NOTE}:}},
+bodyfont=\normalfont,
+]{exobreak}
+
+\declaretheorem[style=exobreak, name=Ejercicio,%
+postheadhook=\leavevmode\myleftbar, %
+prefoothook = \endmyleftbar]{exo}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\title{Parcial 1: Introducción a Ciencia de Datos.}
+
+\author{Rojas Gutiérrez Rodolfo Emmanuel}
+
+\begin{document}
+\maketitle
+\section{Ejercicios}
+
+\setcounter{exo}{0}
+Primero que nada, los enunciados pueden encontrarse en el pdf adjunto. 
+
+\begin{rem}
+A lo largo de esta asignación, \(M_{n\times m}(\RR)\) denota el espacio de todas las matrices de dimensión \(n\times m\) con coeficientes en los reales, adicionalmente si \(A \in M_{n\times m}(\RR)\) entonces \(A'\) denota a la matriz transpuesta de \(A\). Por último, la notación \(I_{k,k}\) esta reservada para la matriz identidad de dimensión \(k\times k\), además, para \(k\) números reales \(\lambda_1, \hdots, \lambda_{k}\) la notación \(diag(\lambda_1, \hdots, \lambda_{k})\) representa a la matriz diagonal
+\[
+\Matrix{\lambda_1 & 0 & \hdots & 0\\
+        0 & \lambda_2& \hdots & 0 \\
+        \vdots& \vdots & \vdots & \vdots\\ 
+        0& 0 &\hdots & \lambda_{k}}.
+\]
+\end{rem}
+\begin{exo}
+
+\end{exo}
+\begin{solucion}
+Considere que \(X\) es una matriz en \(M_{n \times d}(\RR)\) con rango\footnote{El caso \(X\) en el que el rango de \(X\) es \(1\) no es de interés, pues, en dicho caso no se podría aproximar a \(X\) por matrices de rango menor que el suyo.} \(1 < r \leq \min\kis{n,d}\), entonces, por la descomposición SVD, existen dos matrices \(\hat{U}\in M_{n \times r}(\RR)\) y \(\hat{V} \in M_{d \times r}(\RR)\) con columnas ortonormales y una matriz diagonal \(\hat{\Lambda} \in M_{r \times r}(\RR)\), con todas sus entradas en la diagonal positivas tales que:
+\[
+X = \hat{U} \hat{\Lambda} \hat{V}. 
+\]
+Luego, denote por \(u_{(1)}, \hdots, u_{(r)}\) a las columnas de \(\hat{U}\), por \(v_{(1)}, \hdots, v_{(r)}\) a las columnas de \(\hat{V}\) y por \(\lambda_1, \hdots, \lambda_r\) a los valores en la diagonal de \(\hat{\Lambda}\),\footnote{Donde, \(\lambda_1, \hdots, \lambda_r\) son los valores singulares de \(X\) ordenados de la forma \(\lambda_i \geq\lambda_{i+1}  >0\) para \(i \in \kis{1, \hdots, r}\) y, dichos valores son positivos, pues, \(X \neq 0\) ya que el rango de \(X\) se supuso mayor a 1.} entonces: 
+\begin{align*}
+    \hat{U} &= \Matrix{u_{(1)} & \hdots & u_{(r)} }\\ 
+    \hat{V} &= \Matrix{v_{(1)} & \hdots &v_{(r)} }\\
+    \hat{\Lambda} &= \Matrix{\lambda_{r} & \hdots &\lambda_{r}}.
+\end{align*}
+De este modo, para \(1 \leq k < r\) la aproximación para \(X\) de orden \(k\) obtenida mediante la descomposición en valores singulares, es:
+\[
+X_{k} = U_{k}\Lambda_{k}V_{k},
+\]
+donde, \(U_{k} =  \Matrix{u_{(1)} & \hdots & u_{(k)}} \in M_{n \times k}(\RR)\), \(V_{k}=\Matrix{v_{(1)} & \hdots & v_{(k)}}\in M_{d \times k}(\RR)\) y \(\Lambda_{k} = \diag(\lambda_{1}, \hdots, \lambda_{k})\in M_{k \times k}(\RR)\). Ahora, se enunciaran algunas de las propiedades que cumplen estás matrices por su construcción, primero, como \(\hat{U}\) y \(U_{k}\) comparten sus primeras \(k\) columnas, se sigue que 
+\begin{equation}\label{lab.1}
+    \hat{U}_{ij} = (U_{k})_{ij}, \text{ para cada } i \in \kis{1, \hdots, n} \text{ y cada } j \in \kis{1, \hdots, k},
+\end{equation}
+De manera similar, dado que \(\hat{V}\) y \(V_{k}\) también comparten sus primeras \(k\) columnas, entonces 
+\begin{equation}\label{lab.2}
+    \hat{V}_{ij} = (V_{k})_{ij}, \text{ para cada } i \in \kis{1, \hdots, d} \text{ y cada } j \in \kis{1, \hdots, k},
+\end{equation}
+Por otro lado, dado que \(\hat{U}\) y \(\hat{V}\) poseen columnas ortonormales, entonces 
+\begin{equation}\label{lab.3}
+    \hat{U}'\hat{U} = I_{r,r} = \hat{V}'\hat{V}. 
+\end{equation}
+Más aún, también se tiene que \(U_{k}\) y \(V_{k}\) poseen columnas ortonormales, pues, las \(k\) columnas de \(U_{k}\) y \(V_{k}\) coinciden con las primeras \(k\) columnas de \(\hat{U}\) y \(\hat{V}\) respectivamente, así: 
+\begin{equation}\label{lab.4}
+    U_{k}'U_{k} = I_{k,k} = V_{k}'V_{k}. 
+\end{equation}
+Como último comentario, dado que \(\hat{\Lambda} = diag(\lambda_{1}, \hdots, \lambda_{r})\) y \(\Lambda_{k} = diag(\lambda_{1}, \hdots \lambda_{k})\), entonces, es posible expresar sus entradas en notación \(ij\), como:\footnote{Donde \(\delta_{ij} = \mathbbm{1}_{\kis{i = j}}\) es la delta de Kronecker.}
+\begin{align}
+    \hat{\Lambda}_{ij} &= \lambda_{i}\delta_{ij} \text{ para } i,j \in \kis{1, \hdots, r}\nonumber\\
+    (\Lambda_{k})_{ij} &= \lambda_{i}\delta_{ij} \text{ para } i,j \in \kis{1, \hdots, k}\label{lab.0}
+\end{align}
+Con esto en mente defina:
+\begin{equation}
+    Q = U_{k}\Lambda_{k}, \ P = V_{k},
+\end{equation}
+primero, como \(V_{k}\) es una matriz en \(M_{d \times k}(\RR)\), entonces,  el rango \(s\) de \(V_{k}\) debe ser algo menor o igual a \(\min\kis{k,d}\), no obstante, \(k\) se tomo menor estricto a \(r\) y como \(r\) es el rango de \(X\) y \(X \in M_{n \times d}(\RR)\) entonces \(k<r \leq d\), y por ende, \(\min\kis{k,d} = k\), así, \(s \leq k\). Ahora, dado que las columnas de \(V_{k}\) son ornormales, las mismas son linealmente independientes, por lo que, el rango \(s\) de \(V_{k}\) es al menos \(k\), es decir, \(s \geq k\). Así, se concluye que \(s = k\) y por lo tanto \(P = V_{k}\) es en efecto una matriz de rango \(k\). Procediendo de manera análoga, se concluye que \(U_{k}\) posee rango \(k\), finalmente, como \(\Lambda_{k}\) es una matriz diagonal en \(M_{k \times k}(\RR)\) con todos sus elementos en la diagonal positivos,\footnote{Pues \(\Lambda_{k} = diag(\lambda_1, \hdots, \lambda_{k})\)} entonces, \(\Lambda_{k}\) es de rango \(k\) además de no degenerada, por lo cual, \(Q = U_{k}\Lambda_{
+k}\) preserva el rango de las matrices en la multiplicación, es decir, \(Q\) también es de rango \(k\). Con esto, es posible considerar a estas matrices como candidatas a cumplir las condiciones de primer orden encontradas. Ahora, para probar que en efecto estas matrices satisfacen las condiciones mencionadas, note primeramente que 
+\begin{equation}\label{lab.5}
+    XP = (\hat{U}\hat{\Lambda}\hat{V}') V_{k} = \hat{U}\hat{\Lambda}\hat{V}'V_{k}.
+\end{equation}
+Ahora, se probará que 
+\begin{equation}\label{lab.-1}
+\hat{V}'V_{k} = I_{r,k}, \text{ donde para } i \in \kis{1,\hdots,r} \text{ y }  j \in \kis{1,\hdots,k} \text{ se tiene que } (I_{r,k})_{ij} =  \delta_{ij}.   
+\end{equation}
+Es claro que \(\hat{V}'V_{k} \in M_{r \times k}(\RR)\),\footnote{Pues \(\hat{V} \in M_{d \times r}(\RR)\) y \(V_{k}\in M_{d \times k}(\RR)\).} por lo que, para probar la afirmación de arriba tome \(i \in \kis{1, \hdots, r}\), \(j \in \kis{1, \hdots, k}\) y note que 
+\begin{equation*}
+(\hat{V}'V_{k})_{ij} = v_{(i)}'v_{(j)} = \delta_{ij} = ( I_{r,k})_{ij}.    
+\end{equation*}
+donde, la primer igualdad se debe a que la fila \(i\) de \(\hat{V}'\) coincide con la columna \(i\) de \(\hat{V}\) y, a que la \(j\)-ésima columna de \(V_{(k)}\) coincide con la \(j\)-ésima columna de \(\hat{V}\), mientras que, la segunda igualdad se da gracias a que las columnas de \(\hat{V}\) son ortonormales. Luego, dado que \(i \in \kis{1, \hdots, r}\) y \(j \in \kis{1, \hdots, k}\) son arbitrarios, se concluye de la igualdad anterior que \(\hat{V}'V_{k} =  I_{r,k}\), lo que en conjunto con \eqref{lab.5}, implica que 
+\begin{equation}\label{lab.6}
+    XP = \hat{U}\hat{\Lambda}I_{r,k}.
+\end{equation}
+Finalmente, se verá que \(\hat{U}\hat{\Lambda}I_{r,k} = U_{k}\Lambda_{k}\).\footnote{Que la dimensión de las matrices \(\hat{U}\hat{\Lambda}I_{r,k}\) y \(U_{k}\Lambda_{k}\) es \(n \times k\), se deduce de la dimensión de las matrices en la multiplicación.} Para ello, tome \(i \in \kis{1, \hdots, n}\) y \(j \in \kis{1, \hdots,k}\) y note que \begin{align*}
+    ( \hat{U}\hat{\Lambda}I_{r,k})_{ij} &= \sum_{l = 1}^{r}\hat{U}_{il}(\hat{\Lambda}I_{r,k})_{lj}\\ 
+                                                  &= \sum_{l = 1}^{r}\hat{U}_{il}\corch{\sum_{s = 1}^{r}\hat{\Lambda}_{ls}(I_{r,k})_{sj}}\\ 
+                                                  &= \sum_{l = 1}^{r}\hat{U}_{il}\corch{\sum_{s = 1}^{r}(\lambda_{l}\delta_{ls})\delta_{sj}}\\
+                                                  &=  \sum_{l = 1}^{r}\sum_{s = 1}^{r}\corch{\hat{U}_{il}\lambda_{l}\delta_{ls}\delta_{sj}},
+\end{align*}
+donde, en la tercer igualdad se ha usado la definición de \(I_{r,k}\) y lo comentado en \eqref{lab.0}. Ahora, note que la única combinación de índices, para la que las deltas de Kronecker no anulan los sumandos de la suma al lado derecho de la igualdad anterior, es \(l = j\) y \(s = j\), así: 
+\begin{equation}\label{lab.7}
+    (\hat{U}\hat{\Lambda}I_{r,k})_{ij} =   \lambda_{j}\hat{U}_{ij}\delta_{jj}\delta_{jj} = \lambda_{j}\hat{U}_{ij}.  
+\end{equation}
+Luego, note que 
+\begin{align*}
+  (U_{k}\Lambda_{k})_{ij} &= \sum_{s = 1}^{k}(U_{k})_{is}(\Lambda_{k})_{sj} \\ 
+                   &=  \sum_{s = 1}^{k}(U_{k})_{is}(\Lambda_{k})_{sj} \\ 
+                   &= \sum_{s = 1}^{k}(U_{k})_{is}\lambda_{s}\delta_{sj}, 
+\end{align*}
+donde, en la tercer igualdad se uso \eqref{lab.0}. Ahora, note que el única valor para el índice \(s\) para el cual, los sumando en la suma al lado derecho de la igualdad anterior no se anulan, es cuando \(s = j\), así, es posible deducir que 
+\[
+  (U_{k}\Lambda_{k})_{ij} = (U_{k})_{ij}\lambda_{j}\delta_{jj} =  (U_{k})_{ij}\lambda_{j} = \hat{U}_{ij}\lambda_{j}. 
+\]
+donde, la última igualdad se da en virtud de \eqref{lab.1} pues \(j \in \kis{1, \hdots, k}\) e \(i \in \kis{1, \hdots, n}\) . De la igualdad previa y de la igualdad en \eqref{lab.7}, se sigue que
+\[
+  (\hat{U}\hat{\Lambda}I_{r,k})_{ij}  =  (U_{k}\Lambda_{k})_{ij}. 
+\]
+Luego, dado que \(i \in \kis{1, \hdots, n}\) y \(j \in \kis{1, \hdots, k}\) son arbitrarios, se concluye de la igualdad anterior que \(\hat{U}\hat{\Lambda}I_{r,k}  = U_{k}\Lambda_{k}\), lo que en conjunto con \eqref{lab.6}, implica que 
+\begin{equation}\label{lab.8}
+    XP =  U_{k}\Lambda_{k}.
+\end{equation}
+Por último, para concluir la primer parte del resultado, basta observar que
+\begin{align*}
+    QP'P = (U_{k}\Lambda_{k})V_{k}'V_{k} = U_{k}\Lambda_{k}I_{k,k} =  U_{k}\Lambda_{k},
+\end{align*}
+donde, la primer igualdad se debe a la definición de las matrices \(P\) y \(Q\), mientras que, la segunda se debe a lo estipulado en \eqref{lab.4}. De lo anterior, y de \eqref{lab.8} se concluye que 
+\begin{equation}\label{lab.9}
+    XP =   QP'P.
+\end{equation}
+Ahora, procediendo de manera análoga a como se probo \eqref{lab.-1}, se puede prueba que\footnote{Pues, las columnas de \(\hat{U}\) y \(U_{k}\) también son ortonormales.}
+\begin{equation}\label{eq1}
+\hat{U}'U_{k} = I_{r,k},  
+\end{equation}
+De este modo, note que:\footnote{Abajo se uso que \(\hat{\Lambda}\) es diagonal y por tanto simétrica.} 
+\begin{equation}\label{lab.10}
+    X'Q = (\hat{U} \hat{\Lambda} \hat{V}')'U_{k}\Lambda_{k} =  (\hat{V}')'\hat{\Lambda} \hat{U}'U_{k}\hat{k} =   \hat{V}\hat{\Lambda}I_{r,k}\Lambda_{k}.
+\end{equation}
+Ahora, se probará que \(\hat{V}\hat{\Lambda}I_{r,k} = V_{k}\Lambda_{k}\),\footnote{Que la dimensión de las matrices implicadas es \(d \times k\), se deduce de la dimensión de las matrices en la multiplicación.} con esto en mente, tome \(i \in \kis{1,\hdots, d}\) y \(j \in \kis{1, \hdots, k}\) entonces      
+\begin{align*}
+   (\hat{V}\hat{\Lambda}I_{r,k})_{ij} &= \sum_{l = 1}^{r}\hat{V}_{il}(\hat{\Lambda}I_{r,k})_{lj}\\ 
+                                                  &= \sum_{l = 1}^{r}\hat{V}_{il}\corch{\sum_{s = 1}^{r}\hat{\Lambda}_{ls}(I_{r,k})_{sj}}\\ 
+                                                  &= \sum_{l = 1}^{r}\hat{V}_{il}\corch{\sum_{s = 1}^{r}(\lambda_{l}\delta_{ls})\delta_{sj}}\\
+                                                  &=  \sum_{l = 1}^{r}\sum_{s = 1}^{r}\corch{\hat{V}_{il}\lambda_{l}\delta_{ls}\delta_{sj}},
+\end{align*}
+donde, en la tercer igualdad se ha usado la definición de \(I_{r,k}\) y lo comentado en \eqref{lab.0}. Ahora, note que la única combinación de índices, en los que las deltas de Kronecker no anulan los sumandos de la suma al lado derecho de la igualdad anterior, es \(l = j\) y \(s = j\), así: 
+\begin{equation}\label{lab.14}
+   (\hat{V}\hat{\Lambda}I_{r,k})_{ij} &=   \hat{V}_{ij}\lambda_{j}\delta_{jj}\delta_{jj} = \lambda_{j}\hat{V}_{ij}.  
+\end{equation}
+Luego, observe que 
+\begin{align*}
+  (V_{k}\Lambda_{k})_{ij} &= \sum_{s = 1}^{k}(V_{k})_{is}(\Lambda_{k})_{sj} \\ 
+                   &=  \sum_{s = 1}^{k}(V_{k})_{is}(\Lambda_{k})_{sj} \\ 
+                   &= \sum_{s = 1}^{k}(V_{k})_{is}\lambda_{s}\delta_{sj}, 
+\end{align*}
+donde, en la tercer igualdad se uso \eqref{lab.0}. Ahora, note que el única valor para el índice \(s\), con el cual los sumando en la suma al lado derecho de la igualdad anterior no se anulan, es  \(s = j\), así, es posible deducir que 
+\[
+  (V_{k}\Lambda_{k})_{ij} = (V_{k})_{ij}\lambda_{j}\delta_{jj} =  (V_{k})_{ij}\lambda_{j} = \hat{V}_{ij}\lambda_{j}. 
+\]
+donde, la última igualdad se da en virtud de \eqref{lab.2} pues \(j \in \kis{1, \hdots, k}\) e \(i \in \kis{1,\hdots, d}\). De la igualdad previa y de la igualdad en \eqref{lab.14}, se sigue que
+\[
+  (\hat{V}\hat{\Lambda}I_{r,k})_{ij}  =  (V_{k}\Lambda_{k})_{ij}. 
+\]
+Luego, dado que \(i \in \kis{1, \hdots, d}\) y \(j \in \kis{1, \hdots, k}\) son arbitrarios, se concluye de la igualdad anterior que \(\hat{V}\hat{\Lambda}I_{r,k} = V_{k}\Lambda_{k}\), lo que en conjunto con \eqref{lab.10}, implica que 
+\begin{equation}\label{lab.17}
+    X'Q = V_{k}\Lambda_{k}\Lambda_{k} =  V_{k}\Lambda_{k}^2.
+\end{equation}
+Finalmente, note que:\footnote{Abajo, se esta empleando que \(\Lambda_{k}\) es simétrica por ser una mátriz diagonal. }
+\begin{align*}
+PQ'Q &= V_k(\Lambda_{k}'U_{k}')( U_{k}\Lambda_{k}) = V_k\Lambda_{k}U_{k}' U_{k}\Lambda_{k}\\ 
+     &=V_k\Lambda_{k}I_{k,k}\Lambda_{k} = V_{k}\Lambda_{k}^2. 
+\end{align*}
+donde, la primer igualdad en la primer linea se sigue de las definiciones de \(P\) y \(Q\), mientras que, la tercer desigualdad en la segunda linea se debe a \eqref{lab.4}. De la igualdad anterior y de \eqref{lab.17}, se sigue que
+\[
+ X'Q = PQ'Q.
+\]
+Así, de lo anterior y de \eqref{lab.9} se concluye el resultado.
+\end{solucion}
+
+\begin{exo}
+
+\end{exo}
+\textbf{a)}
+\begin{solucion}
+Se escribirá que es un producto interno matricial definido positivo y qué es una norma matricial. Primeramente, una función \(\inner{\cdot, \cdot} : M_{n \times m}(\RR)\times M_{n \times m}(\RR) \to \RR\) es un producto interno matricial definido positivo, si
+\begin{itemize}\label{item.1}
+    \item[\textit{1.}] Dados \(A_1,A_2,A_3\in M_{n\times m}(\RR)\) y \(\alpha, \beta \in \RR\), se cumple que: \[\inner{\alpha A_2+ \beta A_3, A_1} = \alpha \inner{A_2,A_1} + \beta \inner{A_3, A_1}.\]
+    \item[\textit{2.}] Dadas \(A_1,A_2 \in M_{n\times m}(\RR)\), se sigue que: \[\inner{A_1,A_2}= \inner{A_2,A_1}.\]
+    \item[\textit{3.}] Dada \(A \in M_{n\times m}(\RR)\), entonces: \[\inner{A,A} \geq 0.\] Donde \(\inner{A,A} = 0\) si y solo si \(A=0\).
+\end{itemize}
+Por otro lado, una función \(\norm{ \cdot} : M_{n \times m}(\RR)\to \RR_{+}\) es una norma matricial, si
+\begin{itemize}\label{item.2}
+    \item[\textit{I}.] Dada \(A \in M_{n\times m}(\RR)\), se cumple que \[\norm{A} \geq 0.\] Adicionalmente, \(A = 0\) si y solo si \(\norm{A} = 0.\) 
+    \item[\textit{II}.] Dados \(A \in M_{n\times m}(\RR)\) y \(\alpha \in \RR\), se satisface que: \[\norm{\alpha A} = \abs{\alpha}\norm{A}.\]
+    \item[\textit{III}.] Dadas \(A,B \in M_{n\times m}(\RR)\), se cumple que: \[\norm{A + B} \leq \norm{A} + \norm{B}.\] 
+\end{itemize}
+Como último comentario, es un resultado conocido de álgebra lineal que si \(\inner{\cdot , \cdot} : M_{n \times m}(\RR)\times M_{n \times m}(\RR) \to \RR\) es un producto interno matricial definido positivo, entonces, la función \(\norm{\cdot} : M_{n \times m}(\RR)\times M_{n \times m}(\RR) \to \RR_{+}\) con regla de correspondencia\footnote{Ver anexo \ref{anex}, si esto no es del todo convincente.}
+\[
+\norm{A} = \inner{A, A}^{1/2},
+\]
+es una norma matricial. Con esto en mente, se probará que la norma de Frobenius es una norma matricial en \(M_{n\times m}(\RR)\). Primeramente, defina la función \(\inner{\cdot,\cdot}:M_{n\times m}(\RR)\times M_{n\times m}(\RR)  \to \RR\) con regla de correspondencia 
+\[
+\inner{A_1,A_2} = \Tr(A_1'A_2).
+\]
+Se probará que \(\inner{\cdot, \cdot}\) define un producto interno matricial definido positivo en \(M_{n \times m}(\RR)\). Para ello, bastará verificar que \(\inner{\cdot, \cdot}\) satisface las propiedades listadas en \ref{item.1}, así
+\begin{itemize}
+    \item[1.] Sean \(A_1,A_2,A_3\in M_{n\times m}(\RR)\) y \(\alpha, \beta \in \RR\), entonces, dado que el operador \(\Tr: M_{m\times m }(\RR) \to \RR\) es lineal, se tiene que: 
+    \begin{align*}
+     \inner{\alpha A_2+ \beta A_3, A_1} &= \Tr((\alpha A_2+ \beta A_3)' A_1) \\ 
+                                   &=\Tr(\alpha A_2'A_1+ \beta A_3'A_1)\\
+                                   &= \alpha\Tr(A_2'A_1)+ \beta\Tr(A_3'A_1) = \alpha \inner{A_2,A_1} + \beta \inner{A_3, A_1}. 
+    \end{align*}
+    Lo que prueba que \(\inner{\cdot, \cdot}\) satisface \textit{1.}
+    \item[2.] Ahora, \(\inner{\cdot,\cdot}\) satisface \textit{2.} gracias a que para cualquier matriz \(A \in M_{m \times m}(\RR)\), se cumple que \(\Tr(A') = \Tr(A)\). Esto porque si \(A_1, A_2 \in M_{n \times m}(\RR)\) entonces: 
+    \[
+    \inner{A_1,A_2}= \Tr(A_1' A_2) = \Tr((A_1'A_2)') = \Tr(A_2' A_1) =  \inner{A_2,A_1}.
+    \]
+    \item[3.] Ahora, tome \(A \in M_{n \times m}(\RR)\) 
+   \begin{align*}
+      \inner{A,A} &= \Tr(A'A) = \sum_{i= 1}^{m}(A'A)_{ii} = \sum_{i= 1}^{m} \sum_{k = 1}^{n}(A')_{ik}A_{ki} \\ 
+                  &= \sum_{i= 1}^{m} \sum_{k = 1}^{n}A_{ki}A_{ki}= \sum_{i= 1}^{m} \sum_{k = 1}^{n}A_{ki}^2. 
+    \end{align*}
+    Así: 
+    \begin{equation}\label{kk}
+       \inner{A,A} = \sum_{i= 1}^{m} \sum_{k = 1}^{n}A_{ki}^2 \geq 0, 
+    \end{equation}
+    pues, el lado derecho de la igualdad anterior es una suma de términos al cuadrado, es decir, es una suma de términos no negativos. Finalmente, sea \(A \in M_{n \times m}(\RR)\) y suponga que \(\inner{A,A} = 0\), entonces, por lo hecho para deducir \eqref{kk} lo anterior implica que
+    \[
+     \sum_{i = 1}^{m} \sum_{k = 1}^{n}A_{ki}^2 = 0. 
+    \] 
+    Ahora, note que \(\sum_{k = 1}^{n}A_{ki}^2 \geq 0\) para cada \(i \in \kis{1, \hdots, m}\), por lo que, la igualdad anterior implica que 
+    \[
+    \sum_{k = 1}^{n}A_{ki}^2 = 0, \text{ para cada } i \in \kis{1, \hdots, m}.  
+    \] 
+    Finalmente, al notar que \(A_{ki}^2 \geq 0\) para cada \(i \in \kis{1, \hdots, m}\) y \(k \in \kis{1, \hdots, n}\), se concluye de las \(m\) igualdades anteriores que: 
+    \[
+    A_{ki}^2 = 0, \text{ para cada \(i \in \kis{1, \hdots, m}\) y \(k \in \kis{1, \hdots, n}\)}.
+    \]
+    o equivalentemente que 
+    \[
+    A_{ki} = 0, \text{ para cada \(i \in \kis{1, \hdots, m}\) y \(k \in \kis{1, \hdots, n}\)}.
+    \]
+    Lo que implica que \(A = 0\). Recíprocamente, es evidente que si \(A= 0\) entonces \(\inner{A,A} = \Tr(0)= 0\). Es decir \(\inner{\cdot, \cdot}\) cumple \textit{3.}
+ \end{itemize}
+ Por lo anteriormente demostrado, se concluye que \(\inner{\cdot,\cdot}\) en efecto es un producto interno matricial definido positivo en \(M_{n\times m}(\RR)\), por lo que, la función \(\norm{\cdot}_{F}:M_{n\times m}(\RR) \to \RR\) definida como: 
+ \[
+ \norm{A}_{F} = \inner{A,A}^{\frac{1}{2}} = \Tr(A'A)^{1/2},
+ \]
+es una norma matricial sobre el espacio de la matrices \(n\times m\) con coeficientes reales, es decir, la norma de Frobenius es en efecto una norma matricial.
+\end{solucion}
+
+\textbf{b}
+\begin{solucion}
+Considere la función \(\norm{}_{2}: M_{n \times m}(\RR) \to \RR_{+}\) con regla de correspondencia  
+\[
+\norm{A}_{2} = \sup_{x\in \RR^{m}: x \neq 0}\frac{\norm{Ax}}{\norm{x}}.
+\]
+donde, las normas al lado derecho de la igualdad son simplemente normas euclidianas.\footnote{Con cierto abuso de notación, pues, la norma arriba en el cociente es la euclidiana en \(\RR^{n}\), mientras que, la norma de abajo es la correspondiente norma euclidiana en \(\RR^m\). } Primero, se probará que para \(A \in M_{n \times m}(\RR)\)  
+\[
+\norm{A}_{2} = \sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au}
+\]
+Para ver esto, observe que si \(u \in \RR^{m}\) es un vector de norma \(1\), entonces: 
+\[
+\norm{A}_{2} = \sup_{x\in \RR^{m}: x \neq 0}\frac{\norm{Ax}}{\norm{x}} \geq \frac{\norm{Au}}{\norm{u}} = \norm{Au}. 
+\]
+Luego, como \(u \in \RR^{m}\) es un vector de norma \(1\) arbitrario se sigue de la desigualdad anterior, que
+\begin{equation}\label{lab.20}
+\sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au} \leq \norm{A}_{2}.    
+\end{equation}
+Mientras que, si \(x \in \RR^{m}\) es tal que \(x \neq 0\), entonces, \(u = x/\norm{x}\) es un vector de norma unitaria, por lo que:
+\[
+\frac{\norm{Ax}}{\norm{x}}=\norm{\frac{1}{\norm{x}}Ax}= \norm{A\pare{\frac{x}{\norm{x}}}}= \norm{Au} \leq \sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au},
+\]
+donde, para la segunda igualdad se ha usado la propiedad que cumple la norma euclidiana respecto a los escalares. Luego, como \(x \in \RR^{m}\) es un vector distinto de cero arbitrario, se sigue de la desigualdad previa que
+\[
+\norm{A}_{2} = \sup_{x\in \RR^{m}: x \neq 0}\frac{\norm{Ax}}{\norm{x}}\leq \sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au}. 
+\]
+De la desigualdad anterior y de \eqref{lab.20} se concluye que 
+\begin{equation}\label{lab.21}
+\norm{A}_{2} =  \sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au}.     
+\end{equation}
+Por otro lado, dado que\footnote{Note que, por un lado estamos viendo a \(u\) como elemento de \(M_{m\times 1}(\RR)\), para que el producto \(Au\) y la expresión \(u'\) tengan sentido, pero, por otro estamos viendo a \(Au\) como elemento de \(\RR^n\), para que el calcular su norma euclidea tenga sentido. Todo esto es posible gracias a los isomorfismos que existen entre los espacios \(\RR^n\) y \(M_{n\times 1}(\RR)\) y los espacios \(\RR^m\) y \(M_{m\times 1}(\RR)\).} \(\norm{Au}^2 = u'A'A u\), entonces: 
+\begin{equation}\label{lab.22}
+   \sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au}^{2} = \sup_{u\in \RR^{m}: \norm{u} = 1}(u'A'A u). 
+\end{equation}
+Luego, puesto que \(A'A\) es simétrica\footnote{Más aún, es al menos semi-definida positiva.} se sabe de lo hecho en la sección del Cociente de Rayleight,\footnote{Pagina 76, archivo versión N09 de las notas de clase.} que 
+\[
+ \sup_{u\in \RR^{m}: \norm{u} = 1}(u'A'A u) = \lambda_1 < \infty, \text{ donde } \lambda_1 \text{ es el máximo valor propio de } A'A. 
+\]
+Así, de lo anterior y de \eqref{lab.22}, se sigue que
+\begin{equation}\label{lab.222}
+    \sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au}^2 = \lambda_1 < \infty, \text{ donde } \lambda_1 \text{ es el máximo valor propio de } A'A.  
+\end{equation}
+Ahora, se probará que 
+\begin{equation}\label{lab.223}
+      \norm{A}_{2}=\sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au}=\pare{\sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au}^2}^{1/2}.
+\end{equation}
+Para ello, tome \(u \in \RR^{m}\) un vector de norma \(1\) y observe que por definición, se tiene que 
+\[
+0 \leq \norm{Au}^2 \leq \sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au}^2.
+\]
+y, como el mapeo de \(\RR^+\) en \(\RR^+\) dado por \(f(s) = s^{1/2}\) es creciente, lo anterior implica que
+\[
+\norm{Au}\leq \pare{\sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au}^2}^{1/2},
+\]
+Luego, como \(u \in \RR^{m}\) es un vector de norma \(1\) arbitrario se sigue de la desigualdad anterior, que
+\begin{equation}\label{lab.224}
+\norm{A}_{2}=\sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au} \leq \pare{\sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au}^2}^{1/2}.    
+\end{equation}
+Por otro lado, tome \(u \in \RR^{m}\) un vector de norma \(1\) y note que por definición, se sigue que
+\[
+0 \leq \norm{Au} \leq \sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au} = \norm{A}_{2}.
+\]
+y, como el mapeo de \(\RR^+\) en \(\RR^+\) dado por \(g(s) = s^{2}\) es creciente, lo anterior implica que
+\[
+ \norm{Au}^2 \leq\norm{A}_{2}^{2},
+\]
+Luego, como \(u \in \RR^{m}\) es un vector de norma \(1\) arbitrario se sigue de la desigualdad anterior, que
+\[
+0\leq \sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au}^2 \leq\norm{A}_{2}^{2},
+\]
+y, nuevamente como el mapeo de \(\RR^+\) en \(\RR^+\) dado por \(f(s) = s^{1/2}\) es creciente, lo anterior implica que
+\[
+\pare{\sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au}^2}^{1/2} \leq  \norm{A}_{2}.
+\]
+De la desigualdad previa y de \eqref{lab.224} se concluye \eqref{lab.223}. Y, de \eqref{lab.222} y \eqref{lab.223} se sigue que
+\[
+  \norm{A}_{2}  =  \corch{ \sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au}^2}^{1/2} = \lambda_{1}^{1/2} < \infty, \text{ donde } \lambda_1 \text{ es el máximo valor propio de } A'A. 
+\]
+Luego, como se vio cuando se construyo en clase la descomposición SVD,\footnote{Paginas 122-123 de la versión N09 de las notas de clase} los valores singulares de \(A\) coinciden con las raíces cuadradas de los valores propios positivos de \(A'A\),\footnote{Se sabe que todos los valores propios de \(A'A\) deben ser no negativos, pues, \(A'A\) siempre define una matriz cuando menos semi-definida positiva. Más aún, \(A'A\) tiene al menos un valor propio positivo ssi \(A'A \neq 0\), lo que pasa ssi \(A \neq 0\). Adicionalmente, si \(A = 0\) entonces el máximo valor singular de \(A\) es cero, lo cual coincide con la raíz cuadrada del máximo valor propio de \(A'A\), pues, también es cero. Así, el análisis hecho también cubre este caso.} así, dado que \(\lambda_1\) es el máximo valor propio de \(A'A\), entonces, \(\lambda_1^{1/2}\) es el máxima valor singular de \(A\). Por ende, de la arbitrariedad de \(A\) se concluye de lo anterior, de \eqref{lab.22} y de \eqref{lab.21} que para cada \(A \in M_{n \times m}(\RR)\), se tiene que 
+\begin{equation}\label{lab.23}
+    \norm{A}_{2} = \gamma_1,
+\end{equation}
+donde, \(\gamma_1\) es el máximo valor singular de \(A\). Por lo que, solo resta probar que el mapeo \(A \to \norm{A}_{2}\) en efecto define una norma matricial, para ello, se verificará que dicho mapeo cumple las propiedades listadas en \ref{item.2} 
+\begin{itemize}
+    \item[I)] Dado \(A \in M_{n \times m}(\RR)\) es claro que \(\norm{A}_{2} =   \sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au} \geq 0\), por ser el supremo de cantidades no negativas.  Ahora, si \(\norm{A}_2 = 0\) hay dos formas de concluir que \(A = 0\). La primera, se sigue por la igualdad \eqref{lab.23}, pues, gracias a ella sabemos que \(\norm{A}_2\) es igual al máximo valor singular de \(A\), por lo que, si \(\norm{A}_2 = 0\) quiere decir que el máximo valor singular de \(A\) es igual a \(0\) lo que implica que \(A=0\). Por otro lado, la segunda solo hace uso de la definición \( \norm{A}_{2} =  \sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au}\), pues, si \(\norm{A}_{2} = 0\) entonces para cada \(u \in \RR^{m}\) tal que \(\norm{u} = 1\), se tiene que 
+    \[
+    0 \leq \norm{Au } \leq  \sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au} =  \norm{A}_{2} =0.
+    \]
+    Así, \(\norm{Au } = 0\) para cada \(u \in \RR^{m}\) tal que \(\norm{u} = 1\). De este modo, para \(i \in \kis{1, \hdots,m}\) sea \(e_i\) el \(i\)-ésimo vector cánonico en \(\RR^m\), entonces, dado que \(\norm{e_i} = 1\) se sigue que 
+    \[
+    0 = \norm{Ae_{i}} = \pare{e_i 'A'A e_{i}}^{1/2} = \pare{\sum_{j=1}^{n}A_{ji}^2}^{1/2}, \text{ con } i \in \kis{1, \hdots,m},
+    \]
+    donde, la segunda igualdad se deduce al ver que al multiplicar una matriz \(A\), por el vector canónico \(e_i\), el resultado es la columna \(i\) de \(A\), así, \(e_{i}'A'Ae_{i} = (Ae_{i})'Ae_{i}\) es el producto punto de la columna \(i\) de \(A\) consigo misma, o visto de otro modo, la norma euclidiana al cuadrado de la columna \(i\) de \(A\). Luego, la igualdad anterior implica que  
+    \[
+    0 = \sum_{j=1}^{n}A_{ji}^2, \text{ con } i \in \kis{1, \hdots,m},
+    \]
+    y, como \(A_{ji}^2 \geq 0\) para cada \( i \in \kis{1, \hdots,m}\) y \(j\in \kis{1, \hdots,n}\), entonces, la igualdad previa implica que 
+    \[
+    A_{ji}^2 = 0, \text{ para cada \( i \in \kis{1, \hdots,m}\) y \(j\in \kis{1, \hdots,n}\),} 
+    \]
+    o equivalentemente
+    \[
+    A_{ji} = 0, \text{ para cada \( i \in \kis{1, \hdots,m}\) y \(j\in \kis{1, \hdots,n}\).} 
+    \]
+    Lo anterior implica que \(A = 0\). Recíprocamente, si \(A =  0\) entonces \(\norm{A}_{2} =  \sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au} =  \sup_{u\in \RR^{m}: \norm{u} = 1}0 = 0.\) Por lo que, \(\norm{\cdot}_{2}\) cumple la propiedad \textit{I.}   
+    \item[II)] Sean \(\alpha \in \RR\) y \(A \in M_{n \times m}(\RR)\) entonces 
+    \begin{align*}
+        \norm{\alpha A}_{2} &=  \sup_{u\in \RR^{m}: \norm{u} = 1}\norm{(\alpha A)u} =  \sup_{u\in \RR^{m}: \norm{u} = 1}\norm{\alpha (Au)}=  \sup_{u\in \RR^{m}: \norm{u} = 1}\corch{\abs{\alpha}\norm{Au}}\\ 
+                            &= \abs{\alpha}\pare{\sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au}} \text{ dado que \(\abs{\alpha}\geq 0\).}\\
+                            &= \abs{\alpha}\norm{A}_{2}.
+    \end{align*}
+    donde, la tercer igualdad en el primer renglón se da gracias a la propiedad que cumple norma euclidiana respecto a los escalares reales. Así:
+    \[
+     \norm{\alpha A}_{2} =\abs{\alpha}\norm{A}_{2},
+    \]
+    por lo que, \(\norm{\cdot}_{2}\) cumple la propiedad \textit{II.}  
+    \item[III)] Sean \(A,B \in M_{n \times m}(\RR)\) entonces 
+    \begin{align}\label{matenme}
+        \norm{A + B}_{2} &= \sup_{u\in \RR^{m}: \norm{u} = 1}\norm{(A + B)u}\nonumber\\ 
+                         &= \sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au + Bu}.
+    \end{align}
+    Ahora, por la desigualdad del triángulo, que cumple la norma euclideana, se tiene para cualquier \(u \in \RR^m\) con \(\norm{u} = 1\) lo siguiente 
+    \begin{align*}
+        \norm{Au + Bu} \leq \norm{Au} + \norm{Bu} \leq \sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au} + \sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Bu},
+    \end{align*}
+    Luego, como lo anterior se cumple para cualquier \(u \in \RR^m\) tal que \(\norm{u} = 1\), entonces
+    \begin{align*}
+        \sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au + Bu} \leq \sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Au} + \sup_{u\in \RR^{m}: \norm{u} = 1}\norm{Bu} = \norm{A}_{2} + \norm{B}_{2}.
+    \end{align*}
+    Así, de lo anterior y de \eqref{matenme} se obtiene que 
+    \[
+     \norm{A + B}_{2} \leq \norm{A}_{2} + \norm{B}_{2},
+    \]
+    por lo que, \(\norm{\cdot}_{2}\) cumple la propiedad \textit{III.}  
+\end{itemize}
+De lo previamente demostrado, se concluye que la función \(\norm{\cdot}_{2}\) es una norma matricial en \(M_{n\times m}(\RR)\) conocida como norma espectral.
+\end{solucion}
+
+\subsection{Anexo Ej. 2.}\label{anex}
+Este anexo tiene como finalidad el probar, de manera breve y concisa, el resultado empleado entre normas matriciales y productos internos definidos positivos. Para ello, suponga que \(\inner{\cdot, \cdot}:M_{n\times m}(\RR)\times M_{n\times m}(\RR)\to \RR\) es un producto interno matricial definido positivo, entonces, por las propiedades \textit{1} y \textit{2} descritas en \ref{item.1}, se debe tener que \(\inner{\cdot, \cdot}\) es bilineal, pues, es lineal en la primera componente y simétrico de acuerdo a las propiedades citadas. Haciendo uso de esto, se probará de manera breve una versión de la desigualdad de Cauchy-Shwartz para este caso:
+\begin{thm}[Cauchy-Shwartz]\label{thm.1}
+Suponga que \(\inner{\cdot, \cdot}:M_{n\times m}(\RR)\times M_{n\times m}(\RR)\to \RR\) es un producto interno matricial definido positivo, entonces:
+\begin{equation*}
+    \abs{\inner{A,B}} \leq \inner{A,A}^{1/2}\inner{B,B}^{1/2}, \text{ para cada par de matrices } A,B \in M_{n \times m}(\RR). 
+\end{equation*}
+\end{thm}
+\begin{solucion}
+Sean \(A,B \in M_{n \times m}(\RR)\) y tome \(t \in \RR\), entonces, por la bilinealidad y simetría de \(\inner{\cdot, \cdot}\) se tiene que 
+\begin{align}\label{extra}
+     \inner{A + tB, A + tB} &=    \inner{A + tB, A} +  t\inner{A + tB, B} \nonumber\\ 
+                            &= \inner{A,A} +  t\inner{B,A} +  t\inner{A,B} + t^2\inner{B,B}\nonumber\\
+                            &=  t^2\inner{B,B} + 2t\inner{A,B} + \inner{A,A}.
+\end{align}
+Ahora, como \(\inner{\cdot, \cdot}\) es un producto matricial definido positivo, debe de cumplir la propiedad \textit{3} descrita en \ref{item.1}, así, se sigue que
+\[
+ 0 \leq \inner{A + tB, A + tB}.
+\]
+Por ende, de lo anterior y de \eqref{extra} se sigue que
+\[
+ t^2\inner{B,B} + 2t\inner{A,B} + \inner{A,A} \geq 0,
+\]
+y, de la arbitrariedad de \(t \in \RR\), lo anterior implica que si se define el polinomio \(f:\RR \to \RR\), como \(f(t) = t^2\inner{B,B} + 2t\inner{A,B} + \inner{A,A}\), entonces 
+\[
+f(t) = t^2\inner{B,B} + 2t\inner{A,B} + \inner{A,A} \geq 0, \text{ para cada } t\in \RR.
+\]
+Lo que implica, que el discriminante de \(f\) es menor o igual a cero, así:\footnote{En otro caso, el polinomio \(f\) debería de tener dos raíces reales \(x_1 < x_2\) y, en ese caso se tendría que o bien \(f < 0\) en \([x_1,x_2]\) o, \(f < 0\) en \([x_1,x_2]^c\).}
+\[
+(2\inner{A,B})^2 - 4\inner{B,B}\inner{A,A} \leq 0.
+\]
+Luego, al dividir por \(4\) y sumar \(\inner{B,B}\inner{A,A}\) a ambos lados de la desigualdad, se obtiene:
+\[
+(\inner{A,B})^2 \leq \inner{B,B}\inner{A,A},
+\]
+de donde, se sigue la desigualdad deseada.
+\end{solucion}
+Finalmente, se probará el resultado citado
+\begin{thm}
+Suponga que \(\inner{\cdot, \cdot}:M_{n\times m}(\RR)\times M_{n\times m}(\RR)\to \RR\) es un producto interno matricial definido positivo, entonces, la función \(\norm{\cdot}:M_{n\times m}(\RR) \to \RR_{+}\) con regla de correspondencia
+\[
+\norm{A} = \inner{A,A}^{1/2},
+\]
+es una norma matricial.
+\end{thm}
+\begin{solucion}
+Sean \(\norm{\cdot}\) y \(\inner{\cdot,\cdot}\) como en el enunciado del Teorema. Note que \(\norm{}\) satisface la propiedad \(I\) en \ref{item.2}, pues, \(\inner{\cdot,\cdot}\) satisface la propiedad \textit{3} en \ref{item.1}. Por otro lado, dado \(\alpha\in \RR\) y \(A \in M_{n \times m}(\RR)\) observe que por la bilinealidad de \(\inner{\cdot,\cdot}\), se tiene que
+\begin{align*}
+    \norm{\alpha A} = \pare{\inner{\alpha A, \alpha A}}^{1/2} = \pare{\alpha^2 \inner{A, A}}^{1/2} = \abs{\alpha}\inner{A, A}^{1/2} =  \abs{\alpha}\norm{A}.
+\end{align*}
+Por lo que, \(\norm{}\) satisface la propiedad \(II\) en \ref{item.2}. Por otra parte, dadas dos matrices \(A,B \in M_{n \times m}(\RR)\), entonces, repitiendo lo hecho en \eqref{extra} con \(t = 1\), se obtiene que
+\begin{align*}
+     \norm{A + B}^2=\inner{A + B, A + B}  &= \inner{B,B} + 2\inner{A,B} + \inner{A,A} \\ 
+                          &= \norm{B}^2 + 2\inner{A,B} + \norm{A}^2 \\ 
+                          &\leq  \norm{B}^2 + 2\abs{\inner{A,B}}+ \norm{A}^2\\ 
+                          &\leq \norm{B}^2 + 2\inner{A,A}^{1/2}\inner{B,B}^{1/2}+ \norm{A}^2\\ 
+                          &=  \norm{B}^2 + 2\norm{A}\norm{B} +\norm{A}^2\\
+                          &= (\norm{A} + \norm{B})^2,
+\end{align*}
+donde, la primer desigualdad se debe a que \(\inner{A,B} \leq \abs{\inner{A,B}}\) y la segunda desigualdad se debe a la desigualdad de Cauchy-Shwartz. Finalmente, de la desigualdad anterior se sigue que
+\[
+\norm{A + B}^2 \leq (\norm{A} + \norm{B})^2,
+\]
+de lo que se obtiene que 
+\[
+\norm{A + B} \leq \norm{A} + \norm{B},
+\]
+Así, \(\norm{}\) satisface la propiedad \(III\) en \ref{item.2}, es decir, \(\norm{}\) es norma matricial.
+\end{solucion}
+
+
+\begin{exo}
+\end{exo}
+\begin{rem}
+Para \(i \in \kis{1,2}\) y \(j\in\kis{1, \hdots, p}\) se supondrá que los parámetros \(p_{ij}\) pertenecen a \((0,1)\).
+\end{rem}
+\textbf{a}
+\begin{solucion}
+Tome \(f_{i}\) con \(i \in \kis{1, 2}\) como en el enunciado del ejercicio y, considere que las poblaciones \(1\) y \(2\) poseen probabilidades a priori \(\pi_1\) y \(\pi_2\), respectivamente, donde \(\pi_1, \pi_2 \in (0,1)\) y \(\pi_1 + \pi_2 = 1\). Entonces, llegada una observación \(x = (x_1, \hdots, x_p)\) de los atributos de un individuo, el cual pertenece a al menos una de las dos poblaciones citadas, el clasificador óptimo Bayesiano es aquel que clasifica a dicho individuo de la siguiente manera: 
+\begin{equation*}
+    g(x) = \argmin_{i \in \kis{1,2}}\kis{\pi_{i}f_{i}(x)}, 
+\end{equation*}
+ahora, la definición anterior posee un pequeño detalle, puede que exista un individuo tal que \(\pi_1f_{1}(x) = \pi_2f_{2}(x)\) y en ese caso la clasificación no es del todo clara. Por ende, para finalidad de este ejercicio la frontera de decisión se asignará a la clasificación del grupo \(2\), es decir, la regla de clasificación a seguir será:
+\begin{equation}\label{lab.30}
+    g(x) = \begin{cases}
+1 & \text{ si } \pi_{1}f_{1}(x) > \pi_{2}f_{2}(x), \\ 
+2 & \text{ si } \pi_{1}f_{1}(x) \leq \pi_{2}f_{2}(x), 
+\end{cases}.
+\end{equation}
+Así, se clasifica a \(x\) en la población uno si y solo si 
+\begin{equation*}
+    \pi_{1}f_{1}(x) >  \pi_{2}f_{2}(x),  
+\end{equation*}
+es decir, si y solo si 
+\begin{equation*}
+    f_{1}(x) >  \frac{\pi_{2}}{\pi_{1}}f_{2}(x),  
+\end{equation*}
+y, sustituyendo las definiciones de \(f_{i}\) con \(i \in \kis{1,2}\), lo anterior es equivalente con: 
+\begin{equation*}
+    \prod_{j = 1}^{p}p_{1j}^{x_{j}} (1 - p_{1j})^{1 - x_j} >  \frac{\pi_{2}}{\pi_{1}} \prod_{j = 1}^{p}p_{2j}^{x_{j}} (1 - p_{2j})^{1 - x_j},  
+\end{equation*}
+Luego, aplicando logaritmo natural a ambos lados de la desigualdad anterior, la misma resulta equivalente con:\footnote{Pues, \(\log\) es creciente en \((0,\infty)\).} 
+\begin{equation}\label{lab.32}
+    \sum_{j = 1}^{p}\corch{x_j\log(p_{1j}) + (1 - x_{j})\log(1 - p_{1j})} > \log\pare{ \frac{\pi_{2}}{\pi_{1}}} + \sum_{j = 1}^{p}\corch{x_j\log(p_{2j}) + (1 - x_{j})\log(1 - p_{2j})}.
+\end{equation}
+Luego, como para \(i \in \kis{1,2}\) y \(j \in \kis{1, \hdots, p}\) se cumple que 
+\[x_{j}\log(p_{ij}) + (1 - x_{j})\log(1 - p_{ij}) = x_{j}\log\pare{\frac{p_{ij}}{1 - p_{ij}}} + \log(1 - p_{ij}),\]
+entonces, la desigualdad en \eqref{lab.32} puede ser expresada de forma equivalente como
+\begin{equation*}
+    \sum_{j = 1}^{p}\corch{x_{j}\log\pare{\frac{p_{1j}}{1 - p_{1j}}} + \log(1 - p_{1j})} > \log\pare{ \frac{\pi_{2}}{\pi_{1}}} + \sum_{j = 1}^{p}\corch{x_{j}\log\pare{\frac{p_{2j}}{1 - p_{2j}}} + \log(1 - p_{2j})},
+\end{equation*}
+o equivalentemente 
+\begin{equation*}
+   \sum_{j = 1}^{p}\corch{x_{j}\log\pare{\frac{p_{1j}}{1 - p_{1j}}}}+  \sum_{j = 1}^{p}\log(1 - p_{1j}) > \log\pare{ \frac{\pi_{2}}{\pi_{1}}} + \sum_{j = 1}^{p}\corch{x_{j}\log\pare{\frac{p_{2j}}{1 - p_{2j}}}} +  \sum_{j = 1}^{p}\log(1 - p_{2j}),
+\end{equation*}
+de esto modo, al restar a ambos lados las cantidades \(\sum_{j = 1}^{p}\corch{x_{j}\log\pare{\frac{p_{2j}}{1 - p_{2j}}}}\) y \( \sum_{j = 1}^{p}\log(1 - p_{1j})\), es posible expresar la desigualdad anterior de manera equivalente, como
+\begin{equation*}
+     \sum_{j = 1}^{p}\corch{x_{j}\pare{\log\pare{\frac{p_{1j}}{1 - p_{1j}}} - \log\pare{\frac{p_{2j}}{1 - p_{2j}}}}} >   \log\pare{ \frac{\pi_{2}}{\pi_{1}}} + \sum_{j = 1}^{p}\corch{\log(1 - p_{2j})-\log(1 - p_{1j})}, 
+\end{equation*}
+o equivalentemente 
+\begin{equation}\label{lades}
+         \sum_{j = 1}^{p}\corch{x_{j}\pare{\log\pare{\frac{p_{1j}}{1 - p_{1j}}\frac{1 - p_{2j}}{p_{2j}}}}} >   \log\pare{ \frac{\pi_{2}}{\pi_{1}}} + \sum_{j = 1}^{p}\corch{\log\pare{\frac{1 - p_{2j}}{1 - p_{1j}}}}, 
+\end{equation}
+Así, si se define \(w = (w_1, \hdots, w_p)\) y \(w_0 \in \RR\) como 
+\begin{align}
+      w_j &= \log\pare{\frac{p_{1j}}{1 - p_{1j}}\frac{1 - p_{2j}}{p_{2j}}},\  j \in \kis{1, \hdots, p}, \nonumber\\ 
+      w_0 &= -\log\pare{ \frac{\pi_{2}}{\pi_{1}}} - \sum_{j = 1}^{p}\corch{\log\pare{\frac{1 - p_{2j}}{1 - p_{1j}}}}\nonumber\\
+          &= \log\pare{ \frac{\pi_{1}}{\pi_{2}}} + \sum_{j = 1}^{p}\corch{\log\pare{\frac{1 - p_{1j}}{1 - p_{2j}}}},\label{lades2} 
+\end{align}
+entonces, la desigualdad en \eqref{lades} puede escribirse como:\footnote{Al ver a \(x\) y \(w\) como elementos de \(M_{p\times 1}(\RR)\), esto gracias al isomorfismo que existe entre \(\RR^p\) y \(M_{p\times 1}(\RR)\).} 
+\[
+  w'x + w_0 > 0. 
+\]
+Así, la desigualdad 
+\[
+f_1(x)\pi_{1} > f_{2}(x)\pi_{2},
+\]
+es equivalente con
+\[
+  w'x + w_0 > 0,
+\]
+Más aún, repitiendo todos los pasos realizados para probar dicha equivalencia, pero cambiando \(>\) por \(\leq\), se prueba que la desigualdad \(f_1(x)\pi_{1} \leq f_{2}(x)\pi_{2}\) es equivalente con la desigualdad \(w'x + w_0 \leq 0\), así, el clasificador óptimo bayesiano \(g\) dado en \eqref{lab.30} puede ser escrito de manera equivalente, como
+\begin{equation}\label{lab.301}
+    g(x) = \begin{cases}
+1 & \text{ si }  w'x + w_0 > 0, \\ 
+2 & \text{ si }   w'x + w_0 \leq 0.
+\end{cases},
+\end{equation}
+es decir, se clasifica a \(x\) en la población \(1\) si y solo si \(w'x + w_0 > 0\), con \(w\) y \(w_0\) como en \eqref{lades2}.
+\end{solucion}
+\textbf{b}
+\begin{solucion}
+Suponga que \(X_1, X_2 \in M_{n \times p }(\RR)\) son dos matrices de datos cuyas entradas, para coincidir con la notación del ejercicio, se denotarán como:
+\begin{align*}
+    (X_1)_{ij} = x_{ij}^{1}, \text{ donde } i \in \kis{1, \hdots, n} \text{ y }   i \in \kis{1, \hdots, p}.\\ 
+    (X_2)_{ij} = x_{ij}^{2}, \text{ donde } i \in \kis{1, \hdots, n} \text{ y }   i \in \kis{1, \hdots, p},
+ \end{align*}
+ Ahora, para \(i \in \kis{1, 2}\) y \(j \in \kis{1, \hdots, n}\) denote por \(x_{j}^{i} = (x_{j1}^{i}, \hdots,x_{jp}^{i})\) a la fila \(j\)-ésima de la matriz \(X_{i}\) y, suponga que las \(n\) filas, \(x_{1}^{i}, \hdots, x_{n}^{i}\), de dicha matriz son observaciones independientes de los atributos de individuos de la población \(i\). De este modo, la verosimilitud para los parámetros \(\widetilde{p} =(p_{i1}, \hdots, p_{ip})\) inducida por las observaciones en las filas de \(X_i\), esta dada por: 
+ \begin{equation*}
+    L\pare{\widetilde{p}|X_{i}} = \prod_{j = 1}^{n}f_{i}(x_{j}^{i}) = \prod_{j = 1}^{n}\prod_{r = 1}^{p}p_{ir}^{x_{jr}^{i}} (1 - p_{ir})^{1 - x_{jr}^{i}}, \text{ donde } \widetilde{p}\in(0,1)^p. 
+ \end{equation*}
+ Así, la log-verosimilitud correspondiente a la función de verosimilitud anterior, es: 
+  \begin{align*}
+    l\pare{\widetilde{p}|X_{i}} &= \sum_{j = 1}^{n}\sum_{r = 1}^{p}\corch{x_{jr}^{i}\log(p_{ir}) + (1 - x_{jr}^{i})\log(1 - p_{ir})},\text{ donde } \widetilde{p}\in(0,1)^p. 
+ \end{align*}
+ Por lo cual, la log-verosimilitud es una función diferenciable en \((0,1)^p\), así, derivando la expresión anterior respecto a \(p_{is}\) con \(s \in \kis{1,\hdots, p}\), se sigue que 
+ \begin{align}\label{ladesi3}
+     \frac{\partial}{\partial p_{is}} l\pare{\widetilde{p}|X_{i}} &=\sum_{j = 1}^{n}\corch{\sum_{r = 1}^{p}\frac{\partial}{\partial p_{is}}\corch{x_{jr}^{i}\log(p_{ir}) + (1 - x_{jr}^{i})\log(1 - p_{ir})}}.
+ \end{align}
+ Ahora, note que para \(r \neq s\) la expresión \(x_{jr}^{i}\log(p_{ir}) + (1 - x_{jr}^{i})\log(1 - p_{ir})\) es constante respecto a \(p_{is}\), por lo que
+ \[
+ \frac{\partial}{\partial p_{is}}\corch{x_{jr}^{i}\log(p_{ir}) + (1 - x_{jr}^{i})\log(1 - p_{ir})} = 0.
+ \]
+ Mientras que, para \(r = s\) se tiene que 
+ \begin{align*}
+     \frac{\partial}{\partial p_{is}}\corch{x_{js}^{i}\log(p_{is}) + (1 - x_{js}^{i})\log(1 - p_{is})} &= \frac{x_{js}^{i}}{p_{is}} - \frac{(1 - x_{js}^{i})}{1 - p_{is}}\\
+                                                                                                       &= \frac{x_{js}^{i}(1 - p_{is}) - p_{is}(1 - x_{js}^i)}{p_{is}(1 - p_{is})}\\
+                                                                                                       &= \frac{x_{js}^{i} - p_{is}}{p_{is}(1 - p_{is})}.
+ \end{align*}
+ Por lo que, es posible continuar la igualdad en \eqref{ladesi3} como  
+ \begin{align*}
+         \frac{\partial}{\partial p_{is}} l\pare{\widetilde{p}|X_{i}} &=\sum_{j = 1}^{n}\frac{x_{js}^{i} - p_{is}}{p_{is}(1 - p_{is})}\\ 
+                                                                      &=\sum_{j = 1}^{n}\frac{x_{js}^{i}}{p_{is}(1 - p_{is})} - \sum_{j = 1}^{n}\frac{p_{is}}{p_{is}(1 - p_{is})}. 
+ \end{align*}
+Así: 
+\[
+ \frac{\partial}{\partial p_{is}} l\pare{\widetilde{p}|X_{i}} =\sum_{j = 1}^{n}\frac{x_{js}^{i}}{p_{is}(1 - p_{is})} - \sum_{j = 1}^{n}\frac{p_{is}}{p_{is}(1 - p_{is})}, \text{ con } s \in \kis{1,\hdots, p}. 
+\]
+Luego, igualando las \(p\) derivadas parciales anteriores a cero, se obtiene el sistema de ecuaciones Score, el cual esta dado por
+\[
+\sum_{j = 1}^{n}\frac{x_{js}^{i}}{p_{is}(1 - p_{is})} - \sum_{j = 1}^{n}\frac{p_{is}}{p_{is}(1 - p_{is})}= 0, \text{ con } s \in \kis{1,\hdots, p},
+\]
+lo que es equivalente a 
+\[
+\sum_{j = 1}^{n}x_{js}^{i} = \sum_{j = 1}^{n}p_{is} = np_{is}, \text{ con } s \in \kis{1,\hdots, p},
+\]
+ Así, al despejar en cada una de las \(p\) ecuaciones anteriores al término \(p_{is}\) se obtiene \(\hat{p}_{is}\), el estimador de máxima verosimilitud de \(p_{is}\), es decir
+\begin{equation}\label{laiguaa}
+    \hat{p}_{is} = \frac{\sum_{j = 1}^{n}x_{js}^{i}}{n}, \text{ con }  s \in \kis{1,\hdots, p} \text{ e } i \in \kis{1,2}
+\end{equation}
+Ahora, aprovechando la invarianza de la estimación por máxima verosimilitud, es posible usar las relaciones en \eqref{lades2} y \eqref{laiguaa}, para obtener los estimadores de máxima verosimilitud de \(w\) y \(w_0\), en notación \(\hat{w} = (\hat{w}_1, \hdots, \hat{w}_n)\) y \(\hat{w}_0\), como: 
+\begin{align*}
+      \hat{w}_j &= \log\pare{\frac{\hat{p}_{1j}}{1 - \hat{p}_{1j}}\frac{1 - \hat{p}_{2j}}{\hat{p}_{2j}}},\  j \in \kis{1, \hdots, p}, \nonumber\\ 
+      \hat{w}_0 &= \log\pare{ \frac{\pi_{1}}{\pi_{2}}} + \sum_{j = 1}^{p}\corch{\log\pare{\frac{1 - \hat{p}_{1j}}{1 - \hat{p}_{2j}}}},
+\end{align*}
+con \(\kis{\hat{p}_{1j}: j\in \kis{1, \hdots, p}}\) y  \(\kis{\hat{p}_{2j}: j\in \kis{1, \hdots, p}}\) como en \eqref{laiguaa}.
+\end{solucion}
+\begin{exo}
+
+\end{exo}
+\textbf{a)}
+\begin{solucion}
+Sean \(\mu_1 = (8,1),\ \mu_2 = (15,2),\ \Sigma_1 = I_{2,2}\) y \(\Sigma_{2} = \Matrix{4 & 0 \\ 0 & 9}\) y, para \(i = \kis{1, 2}\) sea \(f_{i}\) la densidad de una distribución \(N_{2}(\mu_i, \Sigma_i)\), considere dos poblaciones cuyos individuos poseen dos atributos numéricos, los cuales se distribuyen de acuerdo a \(f_1\) si el individuo pertenece a la población \(1\) y como \(f_2\) en otro caso. Además, considere que las poblaciones \(1\) y \(2\) poseen probabilidades a priori \(\pi_1\) y \(\pi_2\), respectivamente, donde \(\pi_1, \pi_2 \in (0,1)\) y \(\pi_1 + \pi_2 = 1\). Entonces, llegada una observación \(x = (x_1, x_2)\) de los atributos de un individuo, el cual pertenece a al menos una de las dos poblaciones citadas, el clasificador óptimo Bayesiano es aquel que clasifica a dicho individuo de la siguiente manera: 
+\begin{equation*}
+    g(x) = \argmin_{i \in \kis{1,2}}\kis{\pi_{i}f_{i}(x)}, 
+\end{equation*}
+ahora, la definición anterior posee un pequeño detalle, puede que exista un individuo tal que \(\pi_1f_{1}(x) = \pi_2f_{2}(x)\) y, en ese caso la clasificación no es del todo clara. No obstante, dado la naturaleza continua de los atributos el evento \(\pi_1f_{1}(x) = \pi_2f_{2}(x)\) tendrá probabilidad \(0\), por lo que, en este caso no es relevante el donde peguemos la frontera de decisión óptima, por lo cual, dicha frontera se asignará a la clasificación del grupo \(1\), es decir, la regla de clasificación a seguir será:  
+\begin{equation}\label{lab.300}
+    g(x) = \begin{cases}
+2 & \text{ si } \pi_{2}f_{2}(x) >  \pi_{1}f_{1}(x), \\ 
+1 & \text{ si } \pi_{1}f_{2}(x) \leq \pi_{2}f_{1}(x), 
+\end{cases}.
+\end{equation}
+Así, se clasifica a \(x\) en la población dos si y solo si 
+\begin{equation*}
+    \pi_{2}f_{2}(x) >  \pi_{1}f_{1}(x),  
+\end{equation*}
+es decir, si y solo si 
+\begin{equation*}
+    f_{2}(x) >  \frac{\pi_{1}}{\pi_{2}}f_{1}(x),  
+\end{equation*}
+y, sustituyendo las definiciones de \(f_{i}\) con \(i \in \kis{1,2}\), lo anterior es equivalente con:
+\begin{equation*}
+    \frac{1}{(2\pi)\abs{\Sigma_2}^{1/2}}\exp\kis{-\frac{1}{2}(x - \mu_{2})'\Sigma_{2}^{-1}(x - \mu_2)} >  \frac{\pi_{1}}{\pi_{2}}    \frac{1}{(2\pi)\abs{\Sigma_1}^{1/2}}\exp\kis{-\frac{1}{2}(x - \mu_{1})'\Sigma_{1}^{-1}(x - \mu_1)},  
+\end{equation*}
+y, cancelando constantes y multiplicando ambos lados por \(\abs{\Sigma_2}^{1/2}\), lo anterior puede representarse de manera equivalente como: 
+\begin{equation*}
+\exp\kis{-\frac{1}{2}(x - \mu_{2})'\Sigma_{2}^{-1}(x - \mu_2)} >  \frac{\pi_{1}}{\pi_{2}}\pare{\frac{\abs{\Sigma_2}}{\abs{\Sigma_1}}}^{1/2}\exp\kis{-\frac{1}{2}(x - \mu_{1})'\Sigma_{1}^{-1}(x - \mu_1)}.  
+\end{equation*}
+Luego, como el mapeo de \((0, \infty)\) en \(\RR\) dado por \(u \mapsto \log(u)\) es estrictamente creciente, se sigue que si \(C = \frac{\pi_{1}}{\pi_{2}}\pare{\frac{\abs{\Sigma_2}}{\abs{\Sigma_1}}}^{1/2}\), entonces, la desigualdad de arriba puede expresarse de forma equivalente como
+\begin{equation}
+    -\frac{1}{2}(x - \mu_2)'\Sigma_{2}^{-1}(x - \mu_2) > \log(C)  -\frac{1}{2}(x - \mu_1)'\Sigma_{1}^{-1}(x - \mu_1),
+\end{equation}
+y, al hacer los productos correspondientes y un poco de álgebra, la desigualdad anterior puede expresarse de manera equivalente, como 
+\begin{equation}\label{lab.40}
+    \frac{1}{2}x'\corch{\Sigma_{1}^{-1} - \Sigma_{2}^{-1}}x + (\mu_2'\Sigma_{2}^{-1} - \mu_{1}'\Sigma_{1}^{-1})x > \log(C) + \frac{1}{2}\corch{\mu_{2}'\Sigma_{2}^{-1}\mu_2 - \mu_{1}'\Sigma_{1}^{-1}\mu_1 }.
+ \end{equation}
+ Por otro lado, recordando que  \(\mu_1 = (8,1), \ \mu_2 = (15,2),\ \Sigma_1 = I_{2,2}\) y \(\Sigma_{2} = \Matrix{4 & 0 \\ 0 & 9}\), entonces, se tiene que 
+ \begin{equation*}
+     \abs{\Sigma_2} = 36,\  \abs{\Sigma_1} = 1,\  \Sigma_{1}^{-1} = \Sigma_{1} = I_{2,2}, \text{ y } \Sigma_{2}^{-1} = \Matrix{1/4 & 0 \\ 0 & 1/9}.  
+ \end{equation*}
+ y, por ende: 
+ \begin{equation}\label{lab.41}
+     \log(C)= \log\pare{\frac{\pi_{1}}{\pi_{2}}\pare{\frac{\abs{\Sigma_2}}{\abs{\Sigma_1}}}^{1/2}} =\log\pare{\frac{6\cdot\pi_{1}}{1 -\pi_{1}}}, 
+ \end{equation}
+ donde, la última igualdad se da gracias a que \(\pi_2 = 1 - \pi_1.\) Adicionalmente, note que 
+ \begin{align}
+     \frac{1}{2}x'\corch{\Sigma_{1}^{-1} - \Sigma_{2}^{-1}}x &= \frac{1}{2}x'\Matrix{3/4 & 0 \\ 0 & 8/9}x \nonumber\\  
+                                                             &= \frac{1}{2}\Matrix{\frac{3}{4}x_1 & \frac{8}{9}x_2}\Matrix{x_1 \\ x_2} \nonumber\\ 
+                                                             &= \frac{1}{2}\pare{\frac{3}{4}x_{1}^2 + \frac{8}{9}x_{2}^2} = \frac{3}{8}x_{1}^{2}+ \frac{4}{9}x_{2}^2. \label{lab.42}
+ \end{align}
+Por otro lado: 
+\begin{align*}
+    \mu_{2}'\Sigma_{2}^{-1} &= \Matrix{15 & 2}\Matrix{1/4 & 0 \\ 0 & 1/9} = \Matrix{15/4 & 2/9},\\
+    \mu_{1}'\Sigma_{1}^{-1} &= \Matrix{8 & 1}\Matrix{1 & 0 \\ 0 & 1} = \Matrix{8 & 1}.\\
+\end{align*}
+Así
+\begin{equation*}
+    \mu_{2}'\Sigma_{2}^{-1} -  \mu_{1}'\Sigma_{1}^{-1} = \Matrix{- 17/4 & -7/9}, 
+\end{equation*}
+Por ende:
+\begin{equation}\label{lab.42}
+     \pare{\mu_{2}'\Sigma_{2}^{-1} -  \mu_{1}'\Sigma_{1}^{-1}}x = \Matrix{- 17/4 & -7/9}\Matrix{x_1 \\ x_2} = -\frac{17}{4}x_1 - \frac{7}{9}x_{2}.
+\end{equation}
+Finalmente, para no hacer más larga la sección de cuentas, se tiene que
+\begin{align*}
+    \mu_2'\Sigma_{2}^{-1}\mu_{2} &= \frac{2041}{36},\\ 
+     \mu_1'\Sigma_{1}^{-1}\mu_{1} &=65.  
+\end{align*}
+Así,
+\begin{equation}\label{lab.43}
+\mu_{2}'\Sigma_{2}^{-1}\mu_{2} -  \mu_1'\Sigma_{1}^{-1}\mu_{1}  = - \frac{299}{36}.    
+\end{equation}
+Así, por \eqref{lab.41}- \eqref{lab.43}, se concluye que la desigualdad en \eqref{lab.40} puede expresarse de manera equivalente como 
+\begin{equation}\label{lab.50}
+    \frac{3}{8}x_{1}^{2}+ \frac{4}{9}x_{2}^2 -\frac{17}{4}x_1 - \frac{7}{9}x_{2} > \log\pare{\frac{6\cdot\pi_{1}}{1 -\pi_{1}}} - \frac{1}{2}\frac{299}{36}.
+\end{equation}
+Por ende, se ha probado que la desigualdad \(\pi_2f_{2}(x) > \pi_{1}f_{1}(x)\) es equivalente a la desigualdad anterior. Finalmente, intercambiando en todas las desigualdades previas el símbolo \(>\) por \(\leq\), se sigue que la desigualdad \(\pi_2f_{2}(x) \leq \pi_{1}f_{1}(x)\), es equivalente a la desigualdad
+\begin{equation}\label{lab.51}
+  \frac{3}{8}x_{1}^{2}+ \frac{4}{9}x_{2}^2 -\frac{17}{4}x_1 - \frac{7}{9}x_{2} \leq \log\pare{\frac{6\cdot\pi_{1}}{1 -\pi_{1}}} - \frac{1}{2}\frac{299}{36}.
+\end{equation}
+Así, si se define \[A_2 = \kis{x =(x_1, x_{2})\in \RR^{2}: x \text{ cumple la desigualdad en \eqref{lab.50}}},\] y  \[A_1 = \left\{x =(x_1, x_{2})\in \RR^{2}: x \text{ cumple la desigualdad en \eqref{lab.51}}\right\},\] entonces, \(\kis{A_{1},A_{2}}\) es una partición de \(\RR^2\) y el clasificador bayesiano óptimo, puede expresarse de manera equivalente como
+\begin{equation}\label{lab.301}
+    g(x) = \begin{cases}
+2 & \text{ si } x \in A_{2}, \\ 
+1 & \text{ si } x \in A_{1}, 
+\end{cases}.
+\end{equation}
+Más aún, la frontera óptima es la frontera de \(A_1\) o de \(A_2\), es decir, es el lugar geométrico de los puntos \(x = (x_1, x_2)\in \RR^2\) tales que 
+\[
+\frac{3}{8}x_{1}^{2}+ \frac{4}{9}x_{2}^2 -\frac{17}{4}x_1 - \frac{7}{9}x_{2} = \log\pare{\frac{6\cdot\pi_{1}}{1 -\pi_{1}}} - \frac{1}{2}\frac{299}{36}.
+\]
+Luego, si define
+\[
+R(\pi_1)=\log\pare{\frac{6\cdot\pi_{1}}{1 -\pi_{1}}} - \frac{1}{2}\frac{299}{36} + \frac{289}{24} + \frac{49}{144}=\log\pare{\frac{6\cdot\pi_{1}}{1 -\pi_{1}}} + \frac{395}{48},
+\]
+Es posible corroborar, al completar cuadrados, que la frontera óptima de decisión puede expresarse equivalentemente como el lugar geométrico de los puntos \(x = (x_1, x_2)\in \RR^2\), tales que  
+\[
+\frac{(x_1 - 17/3)^2}{a(\pi_{1})^2}  + \frac{(x_2 - 7/8)^2}{b(\pi_{1})^2} = 1,
+\]
+donde, \(a(\pi_{1})^2 = (8\cdot R(\pi_1))/3\) y \(b(\pi_{1})^2 = (9\cdot R(\pi_1))/4\). Con lo que, se ha parametrizado a la frontera eficiente en términos de la probabilidad a priori \(\pi_1\) y, se puede apreciar que la frontera eficiente es siempre una Elipse. Haciendo uso de esto, se escribio el siguiente código en \(R\), el cual gráfica para diversas opciones de distribuciones a priori, la frontera óptima del problema:
+\begin{verbatim}
+p1<-c(0.1,0.2,0.5,0.8,0.9)
+(R<-log((p1/(1- p1))*6) - (1/2)*(299/36) + ((17)^2)/24 + 49/144)
+ev<-500
+X<-matrix(,nc=500,nr=5)
+Y1<-matrix(,nc=500,nr=5)
+Y2<-matrix(,nc =500, nr = 5)
+
+for(i in 1:5){
+   X[i,]<-seq(17/3 - sqrt((8*R[i])/3)+1e-6,17/3 + sqrt((8*R[i])/3)-1e-6,length = ev)
+   Y1[i,]<-7/8 + (3/2)*sqrt(R[i] - (3/8)*(X[i,] -17/3)^2)
+   Y2[i,]<-7/8 - (3/2)*sqrt(R[i] - (3/8)*(X[i,] -17/3)^2)
+}
+
+###Fronteras óptimas para varios niveles:
+plotR(X[1,],Y1[1,], col = 1,type ="l",ylim=c(-6,7)
+      ,xlim=c(-1,15),lwd = 2,
+      main = "Fronteras Optimas para Distintas a Priori",
+      xlab ="x1", ylab = "x2")
+lines(X[1,],Y2[1,], col = 1 ,lwd = 2)
+for(i in 2:5){
+lines(X[i,],Y1[i,], col = i,lwd = 2)
+lines(X[i,],Y2[i,], col = i,lwd = 2)
+}
+\end{verbatim}
+Y, con este código se obtuvo la gráfica reportada en la Figura \ref{fig:1}, en la que se presentan las fronteras de decisión óptima para las elecciones de \(\pi_1\): \(0.1, \ 0.2, \ 0.5\ ,0.8\) y \(0.9\), en colores, negro, rojo, verde, azul y cyan respectivamente. Note que, conforme crece la probabilidad a priori para la población \(1\), aumenta el tamaño de la región de clasificación para la población \(1\), i.e, el interior de la elipse, lo cual tiene sentido.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale = 0.5]{Frontiers.png}
+    \caption{Fronteras de decisión óptima para las elecciones de \(\pi_1\): \(0.1, \ 0.2, \ 0.5\ ,0.8\) y \(0.9\), en colores, negro, rojo, verde, azul y cyan respectivamente.}
+    \label{fig:1}
+\end{figure}
+\end{solucion}
+
+\textbf{b)}
+\begin{solucion}
+Para este inciso, se tomaron en cuenta tres diferentes elecciones de la probabilidad a priori \(\pi_1\), se expondrá al completo el caso \(\pi_1 = 0.5\), es decir, cuando se suponen probabilidades a priori iguales, pues, los demás son análogos y por ende solo se reportaran sus resultados. Primeramente, se simularon \(5000\) observaciones, donde, cada observación proviene de una normal bivariada \(N_{2}(\mu_1, \Sigma_1)\) con probabilidad \(\pi_1 = 1/2\) o, de una normal bivariada \(N_{1}(\mu_2, \Sigma_2)\) con probabilidad \(\pi_2 = 1 - \pi_1 =1/2\) y, se guardaron todas las clasificaciones en un vector numérico de nombre \(clase\), todo esto mediante el siguiente fragmento de código:\footnote{La semilla 123 se ha fijado para reproducibilidad de los datos.}
+\begin{verbatim}
+m1<-c(8,1)
+(S1<-rbind(c(1,0),c(0,1)))
+m2<-c(15,2)
+(S2<-rbind(c(4,0),c(0,9)))
+n.sims<-5000 
+clase <- numeric()
+X<-matrix( ,nr = n.sims,nc = 2)
+p1<-.5
+p2<-1 - p1
+
+##Sims
+set.seed(123)
+for(i in 1:n.sims){
+    clase<-c(clase,sample(c(1,2),size = 1,prob=c(p1,p2)))
+    ifelse(clase[i] == 1,X[i,]<-mvrnorm(1,mu = m1,Sigma = S1),X[i,]<-mvrnorm(1,mu = m2,Sigma = S2))
+}
+\end{verbatim}
+Luego, a cada observación simulada se le ha aplicado la regla de decisión \eqref{lab.301} y el resultado de cada clasificación se ha guardado en un vector de nombre \(cl\), mediante el siguiente fragmento de código: 
+\begin{verbatim}
+cl<-numeric(n.sims)
+
+for(i in 1:n.sims){
+   a<-(3/8)*X[i,1]^2 + (4/9)*X[i,2]^2 -(17/4)*X[i,1] - (7/9)*X[i,2]
+   b<- log((p1/(1-p1))*6) - (1/2)*(299/36)
+   ifelse( a > b,cl[i]<-2,cl[i]<-1) 
+}
+\end{verbatim}
+Finalmente, se ha estimado la probabilidad de error como 
+\begin{equation*}
+    \hat{\PP}(Error|\pi_1 = 0.5) = \frac{\sum_{i = 1}^{5000}\mathbbm1_{\kis{cl[i] \neq clase[i]}}}{5000},
+\end{equation*}
+es decir, como el promedio de las entradas en las cuales la clase asignada, por nuestro clasificador bayesiano, es distinta a la clase real. Lo que arrojo un resultado de 
+\[
+ \hat{\PP}(Error|\pi_1 = 0.5) = 0.0062.
+\]
+Finalmente, una gráfica de la frontera de decisión óptima, para este caso, junto con los datos simulados se presenta en la Figura \ref{fig:2}. En dicha gráfica se puede corroborar, de manera ilustrativa, que el desempeño del clasificador es bastante bueno.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale = 0.5]{Fronters1.png}
+    \caption{Frontera de decisión para el caso \(\pi_{1} = 0.5\) en verde, parámetros de la elipse \(a(\pi_1) \approx  5.169\) y \(b(\pi_1) \approx  4.748\). Observaciones de la población \(1\) en puntos negros, observaciones de la población \(2\) en puntos rojos.}
+    \label{fig:2}
+\end{figure}
+Finalmente, en las Figuras \ref{fig:3} y \ref{fig:4} se dejan gráficas, similares a la anterior, para los casos \(\pi_1 = 0.2\) y \(\pi_1 =0.8\) respectivamente, al pie de las mismas se encuentra un resumen de los resultados, junto con la probabilidad de error estimada en cada caso, los procedimientos y códigos para su fabricación son análogos al caso expuesto y pueden consultarse en el script adjunto a este trabajo.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale = 0.5]{Fronters2.png}
+    \caption{Frontera de decisión para el caso \(\pi_{1} = 0.2\) en verde, parámetros de la elipse \(a(\pi_1) \approx  4.799\) y \(b(\pi_1) \approx   4.408\). Observaciones de la población \(1\) en puntos negros, observaciones de la población \(2\) en puntos rojos. Probabilidad de error de clasificación \(0.0078\).}
+    \label{fig:3}
+\end{figure}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale = 0.5]{Fronters3.png}
+    \caption{Frontera de decisión para el caso \(\pi_{1} = 0.8\) en verde, parámetros de la elipse \(a(\pi_1) \approx   5.515\) y \(b(\pi_1) \approx  5.066\). Observaciones de la población \(1\) en puntos negros, observaciones de la población \(2\) en puntos rojos. Probabilidad de error de clasificación \(0.0042\).}
+    \label{fig:4}
+\end{figure}
+\end{solucion}
+\begin{exo}
+
+\end{exo}
+\begin{solucion}
+En áreas como Machine Learning o ciencia de datos, es una tarea usual el realizar clasificaciones o estimaciones con base a una muestra y, en ocasiones dichas clasificaciones o estimaciones utilizan el concepto de distancia, no obstante, las altas dimensionalidades pueden nublar este concepto, para ejemplificar esto se utilizara el siguiente ejemplo proveniente de \textcite{giraud_introduction_2015}. Considere el siguiente problema, se busca explicar una variable respuesta \(Y\) que toma volares en \(\RR\), mediante, \(X_{1}, \hdots, X_{p}\) variables aleatorias independientes que toman valores en \([0,1]\) y, para simplicidad del ejemplo, suponga que dichas variables aleatorias poseen una distribución uniforme en \([0,1]\), con lo que, el vector aleatorio \(X =(X_1, \hdots, X_p)\) posee distribución uniforme en el hipercubo \([0,1]^{p}  = \prod_{j  = 1}^{p}[
+0,1]\). De este modo, asuma que nuestros datos consisten en una muestra de tamaño \(n\) de observaciones independientes \(\kis{(Y_{i},X^{(i)}) : i \in \kis{1,\hdots,n}}\), todas con la misma distribución que \((Y, X)\). Así, una forma de llevar a cabo nuestro cometido es mediante un modelo de regresión:
+\begin{equation*}
+    Y_{i} = f(X^{i}) + \ee_{i}, \ i = 1, \hdots, n.
+\end{equation*}
+donde, \(f:[0,1]^p \to \RR\) es una función que debe ser estimada y \(\kis{\ee_1, \hdots, \ee_n}\) es un proceso de ruido blanco. Luego, de acuerdo con Giraud, una forma de estimar \(f(x)\) es mediante algún promedio de las \(Y_{i}\) asociadas a las \(X^{(i)}\) más 'cercanas' al punto \(x\). Ahora, la idea más sencilla para definir cercania es mediante la distancia euclidea y, el algoritmo más sencillo para formas clusters es el algoritmo de \(k\) vecinos más cercanos, mediante el cual, \(f(x)\) se estima como la media de los \(k\) valores de \(Y_{i}\) asociados a los \(k\) valores de \(X^{(i)}\) más cercanos al punto \(x\), pero ¿esta idea esta bien fundamentada? Y sobre todo, ¿qué se entiende por 'cercanía' al utilizar este algoritmo? Pues, como primer paso para responder a estas preguntas se programo para cada \(p\in \kis{2,10, 100,1000}\), un mecanismo en \(R\) para simular \(n = 100\) observaciones de vectores aleatorios distribuidos de manera uniforma en el hipercubo \([0,1]^p\), a dichas simulaciones las denotaremos como \(\kis{X^{(i),p}: 1 \leq i \leq n}\), el código desarrollado para llevar a cabo esta tarea se presenta a continuación: 
+\begin{verbatim}
+#### sims p = 2
+p<-2 
+set.seed(123)
+n.s<-100 
+R<-sapply(1:p,function(i)runif(n.s)) 
+ap1<-sapply(1:n.s,function(x)sapply(1:n.s,function(y)sum((R[x,] - R[y,])^2)^(1/2)))
+ap1<- as.numeric(ap1[ap1 != 0])
+#### sims p = 10
+p<-10 
+set.seed(123)
+n.s<-100 
+R<-sapply(1:p,function(i)runif(n.s)) 
+ap2<-sapply(1:n.s,function(x)sapply(1:n.s,function(y)sum((R[x,] - R[y,])^2)^(1/2)))
+ap2<- as.numeric(ap2[ap2 != 0])
+#### sims p = 100
+p<-100
+set.seed(123)
+n.s<-100 
+R<-sapply(1:p,function(i)runif(n.s)) 
+ap3<-sapply(1:n.s,function(x)sapply(1:n.s,function(y)sum((R[x,] - R[y,])^2)^(1/2)))
+ap3<- as.numeric(ap3[ap3 != 0])
+#### sims p = 1000
+p<-1000
+set.seed(123)
+n.s<-100 
+R<-sapply(1:p,function(i)runif(n.s)) 
+ap4<-sapply(1:n.s,function(x)sapply(1:n.s,function(y)sum((R[x,] - R[y,])^2)^(1/2)))
+ap4<- as.numeric(ap4[ap4 != 0])
+\end{verbatim}
+Con estas observaciones, se procedió a calcular todas las combinaciones de distancias posibles entre los puntos simulados, sin contar las distancias de una observación así misma, lo que nos dio un conjunto \(\kis{\norm{X^{(i),p} - X^{(j),p}}: 1 \leq i < j \leq n}\) de distancias,\footnote{Donde \(\norm{}\) es la norma euclideana en \(\RR^p\).} con el cual se realizaron los histogramas presentados en la Figura \ref{fig:5}, todo esto fue hecho en parte con el código mostrado arriba y, en parte con el siguiente fragmento de código:
+\begin{verbatim}
+par(mfrow = c(2,2))
+histR(ap1, main = "dimension = 2", xlab = "distance between points"
+      ,xlim = c(0, max(ap1)+1e-1))
+histR(ap2, main = "dimension = 10", xlab = "distance between points"
+      ,xlim = c(0, max(ap2)+1e-1))
+histR(ap3,  main = "dimension=100", xlab = "distance between points"
+      ,xlim = c(0, max(ap3)+1e-1))
+histR(ap4, main = "dimension = 1000", xlab = "distance between points"
+      ,xlim = c(0, max(ap4)+1e-1))
+\end{verbatim}
+Ahora, en el histograma ubicado en la esquina superior izquierda de la Figura \ref{fig:5}, el cual que corresponde al caso \(p=2\), observamos que las distancias son bastante decentes, de hecho, todas ellas se encuentran en un rango de \((0.0088, 1.202)\), esto implica que al buscar vecinos cercanos a un punto \(x\) seleccionado dentro del rango de las puntos \(\kis{X^{(i),2}: 1 \leq i \leq n}\), es probable que encontremos observaciones suficientemente cercanos a \(x\) de modo que la estimación para \(f(x)\) sea aceptable, pues, todos los puntos \(\kis{X^{(i),2}: 1 \leq i \leq n}\) se encuentran bastante cerca entre si, no obstante, observe como al aumentar el valor de \(p\) los valores de las distancias comienzan a crecer, esto se ve reflejado en como los histogramas se van alejando poco a poco de cero, hasta llegar al caso extremo \(p = 1000\), en el cual las distancias se mueven en un rango de \( (12.0365, 13.7313)\), por lo cual, incluso tomando puntos \(x\) dentro del rango de las observaciones, las mismas están tan dispersas que aún las más cercanas a \(x\) podrían no estar tan cercanas entre sí y, por ende, el método citado podría conducir a estimaciones inaceptables para \(f(x)\).  
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale = 0.5]{Graph1.png}
+    \caption{Histogramas de las distancias a pares, \(\norm{X^{(i),p} - X^{(j),p}}\), entre 100 puntos simulados de una distribución uniforme en el hipercubo \([0,1]^p\), con \(p = 2,10,100\) y \(1000\).}
+    \label{fig:5}
+\end{figure}
+
+Entonces, ¿qué hacemos en este caso? Lo primero que se nos viene a la mente es que quizás el tamaño de muestra es el problema, pues, es lo único que se mantuvo fijo en los ejemplos anteriores, por lo cual, cuando el valor de \(p\) comienza a hacerse arbitrariamente grande, una posible pregunta es  ¿será que es posible obtener un tamaño de muestra \(n\), de modo que podamos asegurar que dado cualquier \(x \in [0,1]^p\), exista al menos un índice \(i\) para el que \(\norm{X^{(i),p} - x}\leq 1\)? Una forma intuitiva de atacar este problema es la siguiente, suponga que tenemos una muestra de tamaño \(n\) denotada por \(\kis{X^{(i),p}: 1 \leq i < j \leq n}\) de vectores aleatorios uniformes en \([0,1]^p\), entonces, una manera de asegurar que la condición de que: para cada \(x \in [0,1]^p\) exista al menos un índice \(i\) para el que \(\norm{X^{(i),p} - x}\leq 1\), es la siguiente: 
+\begin{equation}\label{no}
+    [0,1]^{p} \subset \bigcup_{i = 1}^{n}B_{p}(X^{(i),p} ,1).
+\end{equation}
+donde, para \(i\in \kis{1, \hdots, n}\) la notación \(B_{p}(X^{(i),p} ,1)\), representa a la bola cerrada centrada en \(X^{(i),p}\) y de radio uno. Luego, como resultado de la contención en \eqref{no}, se debería tener que el volumen\footnote{Entiéndase hiper-volumen o medida de Lebesgue en \(\RR^p\) de las bolas y el hipercubo.} del hipercubo, denotado por \(V([0,1]^p)\), debería ser menor al volumen de la unión de las bolas cerradas, adicionalmente, como el volumen de la unión de las bolas es menor o igual a la suma de los volúmenes de las mismas, se debe cumplir la desigualdad:
+\[
+V([0,1]^p) \leq \sum_{i = 1 }^{n}Volumen(B_{p}(X^{(i),p} ,1)).
+\]
+Luego, como todas las bolas en \(\kis{B_{p}(X^{(i),p} ,1): i \kis{1, \hdots,n}}\) tienen radio uno, es posible probar que su volumen es igual al de la bola cerrada en \(\RR^p\) centrada en \(0\) de radio \(1\), así, denotando por \(V_{p}(1)\) al volumen de esta última bola, se sigue que
+\begin{equation}\label{yacasi}
+    V([0,1]^p) \leq n V_{p}(1). 
+\end{equation}
+Ahora, es posible demostrar que \( V([0,1]^p) = 1\) y que si \(V_{p}(r)\) denota al volumen de la bola cerrada en \(\RR^p\) centrada en \(0\) de radio \(r >0\), entonces:
+\[
+   V_{p}(r) = \frac{\pi^{p/2}}{\Gamma(p/2 + 1)}r^p \to \pare{\frac{2\pi e r^2}{p}}^{p/2} (p\pi)^{-1/2}, \text{ cuando } p \to \infty.
+\]
+donde, \(\Gamma\) representa a la función Gamma. Así, la ecuación en \eqref{yacasi} es equivalente a
+\begin{equation}\label{yaaa}
+     n \geq 1/V_{p}(1) = \frac{\Gamma(p/2 + 1)}{\pi^{p/2}} \to \pare{\frac{p}{2\pi e}}^{p/2} (p\pi)^{1/2}, \text{ cuando } p \to \infty.  
+\end{equation}
+Por lo que, para \(p\in \NN\) dada, se necesita al menos un tamaño de muestra \(n\) superior a 
+\[
+\frac{\Gamma(p/2 + 1)}{\pi^{p/2}},
+\]
+para alcanzar el objetivo deseado. Pero, que tan realista es esto, es decir, que tan probable es que podamos tener esta cantidad de observaciones, pues, conforme crece la dimensión \(p\) es cada vez más utópico, esto debido a que de acuerdo a la expresión asintótica en \eqref{yaaa} conforme \(p\) crece, el tamaño de muestra necesario crecerá hacía infinito de manera exponencial con \(p\). De hecho, esto puede verse en como el valor \(V_{p}(1)\) decae de manera muy rápida hacia cero conforme \(p \to \infty\), hecho que puede observarse en la gráfica presentada en la Figura \ref{fig:6}, la cual fue construida mediante el siguiente fragmento de código:
+\begin{verbatim}
+Vp<-function(p)pi^(p/2)/gamma(p/2 + 1)  
+
+par(mfrow = c(1,1))
+p<-seq(1e-6,100,length.out = 10000)
+P<-Vp(p)
+plotR(p,P,GRID = 0, type = "l",lwd = 2,main = "volume Vp(1)"
+      ,ylab = "volume", xlab = "p")
+\end{verbatim}
+En dicha gráfica, note como a partir de \(p = 20\) la misma ya esta suficientemente pegada a \(0\), por esta razón, el termino \(1/V_{p}(1)\) en \eqref{yaaa} converge rápidamente a infinito y, por ende, este método intuitivo de resolver nuestro problema conducirá a tamaños de muestra irreales, incluso para dimensiones que a simple vista no parecen tan altas. 
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale = 0.5]{Graph2.png}
+    \caption{Valores de \(V_{p}(1)\) para un rango de valores de \(p \in(1,100)\).}
+    \label{fig:6}
+\end{figure}
+A modo de ejemplo de este fenómeno, se deja la tabla en el Cuadro \ref{tab:1}.
+\begin{table}[H]
+        \centering
+        \begin{tabular}{@{}l@{\hskip 0.3in}r@{\hskip 0.3in}r@{\hskip 0.3in}r@{\hskip 0.3in}r@{\hskip 0.3in}r@{\hskip 0.3in}r@{\hskip 0.3in}r@{}}
+            \toprule
+              \(p\) &\(20\) & \(30\) &  \(50\)& \(100\)&\(150\)\\ 
+            \midrule
+              \(n\) &  \(39\)&  \(45630\) &\(5.7\cdot 10^{12}\)& \(42\cdot 10^{29}\) & \(1.28\cdot 10^{72}\) \\ 
+            \bottomrule
+        \end{tabular}
+        \caption{Cotas inferiores para el tamaño de muestra \(n\) de acuerdo a diversos valores de \(p\).}
+        \label{tab:1}
+\end{table}
+Adicionalmente, y contra toda intuición, aunque el tamaño de muestra no fuese un problema, esta solución tampoco resulta del todo eficiente, pues, aunque intuitivamente uno pensaría que el volumen de una bola esta repartido de manera uniforme en ella, conforme \(p\) crece esto no es así, de hecho si \(B_{p}(0,r)\) es una bola cerrada en \(\RR^p\) con centro en cero y radio \(r >0\) y se define el cascarón de dicha bola, en notación \(C_{p}(r)\), como \(C_{p}(r) = B_{p}(0,r)\setminus B_{p}(0,0.99r)\), es decir, los puntos en la bola que están a una distancia menor a \(0.01r\) de su superficie, entonces, es posible probar que el porcentaje del volumen de la bola \(B_{p}(0,r)\) que es aportado por \(C_{p}(r)\), cumple la siguiente relación:
+\begin{equation*}
+    \frac{Volumen(C_{p}(r))}{Volumen(B_{p}(0,r))} = 1 - 0.99^p.
+\end{equation*}
+Dicha expresión converge a \(1\), cuando \(p \to \infty\), por lo que, contra toda intuición el volumen de la bola conforme \(p\) crece a infinito se acumulara en su cascarón. Lo anterior, se puede ver en la Gráfica presentada en la Figura \ref{fig:7}, la cual se construyo con el siguiente fragmento de código.
+\begin{verbatim}
+CpV<-function(p) 1 -0.99^p
+p<-seq(1e-6,1000,length.out = 10000)
+P<-CpV(p)
+plotR(p,P,GRID = 0, type = "l",lwd = 2,main = "fraction in the crust"
+      ,ylab = "fraction", xlab = "p")
+\end{verbatim}
+ \begin{figure}[htb]
+    \centering
+    \includegraphics[scale = 0.5]{Graph3.png}
+    \caption{Valores de \(\frac{Volumen(C_{p}(r))}{Volumen(B_{p}(0,r))}\) para un rango de valores de \(p \in(1,1000)\).}
+    \label{fig:7}
+\end{figure}
+De este modo, la idea de cubrir a \([0,1]^p\) con bolas es cuando menos cuestionable, pues, conforme crece \(p\) el volumen de las mismas no esta uniformemente distribuido. Así, a modo de conclusión se cree que es importante el tener y conocer métodos de reducción de dimensionalidad, como los que han sido vistos en clase, pues, en la práctica muchas veces el tamaño de muestra es limitado, por diversas razones, por lo que es imposible el solicitar más datos, no obstante, en dichos casos siempre se tiene la alternativa de buscar proyectar los mismos en un espacio de menor dimensionalidad, de manera que se pierda la menor información posible con el fin de obtener resultados coherenetes.
+\end{solucion}
+
+\begin{comment}
+\subsection{Anexo Ej. 2.}
+Este anexo tiene como finalidad el probar, de manera breve y concisa, el resultado empleado entre normas matriciales y productos internos. Para ello, suponga que \(\inner{\cdot, \cdot}:M_{n\times m}(\RR)\times M_{n\times m}(\RR)\to \RR\) es un producto interno matricial definido positivo, entonces, por las propiedades \(1\) y \(2\) descritas en \ref{item.1}, se debe tener que \(\inner{\cdot, \cdot}\) es bilineal, pues, es lineal en la primera componente y simétrico de acuerdo a las propiedades citadas. Haciendo uso de esto, se probará de manera breve una versión de la desigualdad de Cauchy-Shwartz para este caso:
+\begin{thm}[Cauchy-Shwartz]\label{thm.1}
+Suponga que \(\inner{\cdot, \cdot}:M_{n\times m}(\RR)\times M_{n\times m}(\RR)\to \RR\) es un producto interno matricial definido positivo, entonces:
+\begin{equation*}
+    \abs{\inner{A,B}} \leq \inner{A,A}^{1/2}\inner{B,B}^{1/2}, \text{ para cada par de matrices } A,B \in M_{n \times m}(\RR). 
+\end{equation*}
+\end{thm}
+\begin{solucion}
+Sean \(A,B \in M_{n \times m}(\RR)\) y tome \(t \in \RR\), entonces, por la bilinealidad y simetría de \(\inner{\cdot, \cdot}\) se tiene que 
+\begin{align}\label{extra}
+     \inner{A + tB, A + tB} &=    \inner{A + tB, A} +  t\inner{A + tB, B} \nonumber\\ 
+                            &= \inner{A,A} +  t\inner{B,A} +  t\inner{A,B} + t^2\inner{B,B}\nonumber\\
+                            &=  t^2\inner{B,B} + 2t\inner{A,B} + \inner{A,A}.
+\end{align}
+Ahora, como \(\inner{\cdot, \cdot}\) es un producto matricial definido positivo, debe de cumplir la propiedad \(3.\) descrita en \ref{item.1}, así, se sigue que
+\[
+ 0 \geq \inner{A + tB, A + tB}.
+\]
+Por ende, de lo anterior y de \eqref{extra} se sigue que
+\[
+ t^2\inner{B,B} + 2t\inner{A,B} + \inner{A,A} \geq 0,
+\]
+y, de la arbitrariedad de \(t \in \RR\), lo anterior implica que si se define el polinomio \(f:\RR \to \RR\), como \(f(t) = t^2\inner{B,B} + 2t\inner{A,B} + \inner{A,A}\), entonces 
+\[
+f(t) = t^2\inner{B,B} + 2t\inner{A,B} + \inner{A,A} \geq 0, \text{ para cada } t\in \RR.
+\]
+Lo que implica, que el discriminan te de \(f\) es menor o igual a cero, así:\footnote{En otro caso, el polinomio \(f\) debería de tener dos raíces reales \(x_1 < x_2\) y, en ese caso se tendría que o bien \(f < 0\) en \([x_1,x_2]\) o, \(f < 0\) en \([x_1,x_2]^c\).}
+\[
+(2\inner{A,B})^2 - 4\inner{B,B}\inner{A,A} \leq 0.
+\]
+De donde, al dividir por \(4\) y sumar \(\inner{B,B}\inner{A,A} \), se obtiene:
+\[
+(\inner{A,B})^2 \leq \inner{B,B}\inner{A,A},
+\]
+de donde, se sigue la desigualdad deseada.
+\end{solucion}
+Finalmente, se probará el resultado citado
+\begin{thm}
+Suponga que \(\inner{\cdot, \cdot}:M_{n\times m}(\RR)\times M_{n\times m}(\RR)\to \RR\) es un producto interno matricial definido positivo, entonces, la función \(\norm{\cdot}: :M_{n\times m}(\RR) \to \RR_{+}\) con regla de correspondencia
+\[
+\norm{A} = \inner{A,A}^{1/2},
+\]
+es una norma matricial.
+\end{thm}
+\begin{solucion}
+Sean \(\norm{\cdot}\) y \(\inner{\cdot,\cdot}\) como en el enunciado del Teorema. Note que \(\norm{}\) satisface la propiedad \(I\) en \ref{item.2}, pues, \(\inner{\cdot,\cdot}\) satisface la propiedad \textit{3.} en \ref{item.1}. Por otro lado, dado \(\alpha\in \RR\) y \(A \in M_{n \times m}(\RR)\), observe que por la bilinealidad de \(\inner{\cdot,\cdot}\), se tiene que
+\begin{align*}
+    \norm{\alpha A} = \pare{\inner{\alpha A, \alpha A}}^{1/2} = \pare{\alpha^2 \inner{A, A}}^{1/2} = \abs{\alpha}\inner{A, A}^{1/2} =  \abs{\alpha}\norm{A}.
+\end{align*}
+Por lo que, \(\norm{}\) satisface la propiedad \(II\) en \ref{item.2}. Por otra parte, dadas dos matrices \(A,B \in M_{n \times m}(\RR)\), entonces, repitiendo lo hecho en \eqref{extra} con \(t = 1\), se obtiene que
+\begin{align*}
+     \norm{A + B}^2=\inner{A + B, A + B}  &= \inner{B,B} + 2\inner{A,B} + \inner{A,A} \\ 
+                          &= \norm{B}^2 + 2\inner{A,B} + \norm{A}^2 \\ 
+                          &\leq  \norm{B}^2 + 2\abs{\inner{A,B}}+ \norm{A}^2\\ 
+                          &\leq \norm{B}^2 + 2\inner{A,A}^{1/2}\inner{B,B}^{1/2}+ \norm{A}^2\\ 
+                          &=  \norm{B}^2 + 2\norm{A}\norm{B} +\norm{A}^2\\
+                          &= (\norm{A} + \norm{B})^2,
+\end{align*}
+donde, la primer desigualdad se debe a que \(\inner{A,B} \leq \abs{\inner{A,B}}\) y la segunda desigualdad se debe a la desigualdad de Cauchy-Shwartz. Finalmente, de la desigualdad anterior se sigue que
+\[
+\norm{A + B}^2 \leq (\norm{A} + \norm{B})^2,
+\]
+de lo que se obtiene que 
+\[
+\norm{A + B} \leq \norm{A} + \norm{B},
+\]
+Así, \(\norm{}\) satisface la propiedad \(III\) en \ref{item.2}, es decir, \(\norm{}\) es norma matricial.
+\end{solucion}
+\end{comment}
+
+\newpage
+\nocite{*}
+\printbibliography
+
+\end{document}
+
